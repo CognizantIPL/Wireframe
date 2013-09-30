@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     
-<!-- Mirrored from aie.quarkwebs.com/equipment.html by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 30 Sep 2013 01:58:58 GMT -->
+<!-- Mirrored from app6.quarkwebs.com/equipment.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 29 Sep 2013 04:10:35 GMT -->
 <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -30,9 +30,9 @@
 		</script>
         
         <!--Accordian-->
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <link rel="stylesheet" href="../code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<script src="../code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="../code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script>
         $(function() {
         $( "#accordion" ).accordion({
@@ -87,7 +87,7 @@
       
         <div class="col-lg-4">
           <h2>Alert Center</h2>
-          <p class="alert alert-danger"><img src="img/symbols-warning.png" style="float:left" width="40" height="40">Centrifugal Machine 1 and 4 reported potential malfunction</p>
+          <p class="alert alert-danger"><img src="img/symbols-warning.png" style="float:left" width="50" height="50">Centrifugal Machine 1 and 4 reported potential malfunction</p>
           
           <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -107,35 +107,7 @@
                 <li  class="list-group-item">Standard Operating Temperature: 75*F</li>
             </ul>
        </div>
-      </div>
-      
-      <div class="row">
-      <!--Image-->
-      <img src="img/equipments.jpg" usemap="#prop_details" style="border-width:thin; border-style:solid; border-color:#9999FF; border-radius:5px; margin-left:17px"/>
-      <map name="prop_details">
-        <area onClick="showDiv('temp')" id="clickme"  shape="circle" coords="153,105,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="222,99,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="187,106,15" alt="tims">
-        
-        <area onClick="showDiv('temp')"  shape="circle" coords="23,220,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="91,221,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="60,217,15" alt="tims">
-
-        <area onClick="showDiv('temp')"  shape="circle" coords="153,216,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="219,220,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="188,215,15" alt="tims">
-
-        <area onClick="showDiv('temp')"  shape="circle" coords="285,101,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="349,106,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="318,106,15" alt="tims">
-        
-        <area onClick="showDiv('temp')"  shape="circle" coords="25,104,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="93,103,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="60,103,15" alt="tims">
-        
-      </map> 
-      
-              <div class="col-lg-4">
+        <div class="col-lg-4">
           <h2 >Sensor Reading</h2>
           <p>
 		  	<script>
@@ -205,7 +177,33 @@
           </div>
         </p>
         </div>
+      </div>
+      
+      <div class="row">
+      <!--Image-->
+      <img src="img/equipments.jpg" usemap="#prop_details"/>
+      <map name="prop_details">
+        <area onClick="showDiv('temp')" id="clickme"  shape="circle" coords="153,105,20" alt="temp">
+        <area onClick="showDiv('curr')"  shape="circle" coords="222,99,17" alt="curr">
+        <area onClick="showDiv('tims')"  shape="circle" coords="187,106,15" alt="tims">
+        
+        <area onClick="showDiv('temp')"  shape="circle" coords="23,220,20" alt="temp">
+        <area onClick="showDiv('curr')"  shape="circle" coords="91,221,17" alt="curr">
+        <area onClick="showDiv('tims')"  shape="circle" coords="60,217,15" alt="tims">
 
+        <area onClick="showDiv('temp')"  shape="circle" coords="153,216,20" alt="temp">
+        <area onClick="showDiv('curr')"  shape="circle" coords="219,220,17" alt="curr">
+        <area onClick="showDiv('tims')"  shape="circle" coords="188,215,15" alt="tims">
+
+        <area onClick="showDiv('temp')"  shape="circle" coords="285,101,20" alt="temp">
+        <area onClick="showDiv('curr')"  shape="circle" coords="349,106,17" alt="curr">
+        <area onClick="showDiv('tims')"  shape="circle" coords="318,106,15" alt="tims">
+        
+        <area onClick="showDiv('temp')"  shape="circle" coords="25,104,20" alt="temp">
+        <area onClick="showDiv('curr')"  shape="circle" coords="93,103,17" alt="curr">
+        <area onClick="showDiv('tims')"  shape="circle" coords="60,103,15" alt="tims">
+        
+      </map> 
       
       </div>
 
@@ -251,10 +249,10 @@
         <script>
           var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='http:/www.google-analytics.com/ga.js';
+            g.src='../www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
     </body>
 
-<!-- Mirrored from aie.quarkwebs.com/equipment.html by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 30 Sep 2013 01:59:02 GMT -->
+<!-- Mirrored from app6.quarkwebs.com/equipment.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 29 Sep 2013 04:10:47 GMT -->
 </html>
