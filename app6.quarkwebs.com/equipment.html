@@ -21,15 +21,15 @@
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
          <script>
-			function goBack()
-			  {
-			  window.history.back()
-			  }
-		</script>
+      function goBack()
+        {
+        window.history.back()
+        }
+    </script>
         
         <!--Accordian-->
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script>
         $(function() {
@@ -42,31 +42,31 @@
         
         <!--tooltip-->
          <script>
-		$(function() {
-		$( document ).tooltip();
-		});
-		</script>
+    $(function() {
+    $( document ).tooltip();
+    });
+    </script>
         
         <!--fade in-->
-	<script src="js\ingressGraph\jquery-1.7.2.js"></script>
-		<script src="js\ingressGraph\foresight-appbuilder-min-0.0.7.js">
-	</script>
-		<script src="js\ingressGraph\ingressGraph.js"></script>	
+  <script src="js\ingressGraph\jquery-1.7.2.js"></script>
+    <script src="js\ingressGraph\foresight-appbuilder-min-0.0.7.js">
+  </script>
+    <script src="js\ingressGraph\ingressGraph.js"></script> 
     <script src="js\ingressGraph\incidentReader.js"></script> 
-		<script type="text/javascript" src="js\ingressGraph\jquery.gchart.js"></script>		
+    <script type="text/javascript" src="js\ingressGraph\jquery.gchart.js"></script>   
     <script type="text/javascript" src="js\service\MobileServices.Web-1.0.0.min.js"></script>   
     <script>
-		 
-		 
-		$('#types select').change(function() { 
-		    $('#typedChart').gchart('option', {type: $('#selectType').val(), 
-		        legend: 'right', format: $('#imgFormat').val()}); 
-		});
+     
+     
+    $('#types select').change(function() { 
+        $('#typedChart').gchart('option', {type: $('#selectType').val(), 
+            legend: 'right', format: $('#imgFormat').val()}); 
+    });
       $('#types select').change(function() { 
         $('#typedHistChart').gchart('option', {type: $('#selectType').val(), 
             legend: 'right', format: $('#imgFormat').val()}); 
     });
-		</script>
+    </script>
 
     </head>
     <body>
@@ -116,7 +116,7 @@
         <div class="col-lg-4">
           <h2>Equipment Summary</h2>
             <ul class="list-group">
-            	<li class="list-group-item">Year Date: 1st Jan 1995</li>
+              <li class="list-group-item">Year Date: 1st Jan 1995</li>
                 <li class="list-group-item">Model : APL12345t</li>
                 <li class="list-group-item">OClass : High Speed</li>
                 <li  class="list-group-item">Operating load: 1500RPM </li>
@@ -125,16 +125,7 @@
             </ul>
        </div>
       </div>
-      <div id="test" style="float:left" >
-			<input type="text" class="deviceid" value="ipl_insurance::3::6::*"  style="display:none"/>
-			<input type="button" class="startscreaming" value="startscreaming" ></input>
-			<input type="button" class="stopstreaming" value="StopStreaming" ></input>
-			<div id="sample"></div>
-<br/><br/>			
-<div id="typedChart" style="width: 450px; height: 300px;">
-			
-			 </div>
-		</div>
+
 
       <div class="row">
       <!--Image-->
@@ -165,43 +156,43 @@
               <div class="col-lg-4">
           <h2 >Sensor Reading</h2>
           <p>
-		  	<script>
-				function showDiv(choice) {
-					if (choice == 'temp')
-					{
-					div = document.getElementById('dflt');
-					div.style.display = "none";	
-					div = document.getElementById('tims');
-					div.style.display = "none";
-					div = document.getElementById('curr');
-					div.style.display = "none";
-					div = document.getElementById('temp');
-					div.style.display = "block";
-					}
-					if (choice == 'curr')
-					{
-					div = document.getElementById('dflt');
-					div.style.display = "none";	
-					div = document.getElementById('temp');
-					div.style.display = "none";
-					div = document.getElementById('tims');
-					div.style.display = "none";
-					div = document.getElementById('curr');
-					div.style.display = "block";						
-					}
-					if (choice == 'tims')
-					{
-					div = document.getElementById('dflt');
-					div.style.display = "none";	
-					div = document.getElementById('curr');
-					div.style.display = "none";
-					div = document.getElementById('temp');
-					div.style.display = "none";
-					div = document.getElementById('tims');
-					div.style.display = "block";							
-					}
-				}
-			</script>
+        <script>
+        function showDiv(choice) {
+          if (choice == 'temp')
+          {
+          div = document.getElementById('dflt');
+          div.style.display = "none"; 
+          div = document.getElementById('tims');
+          div.style.display = "none";
+          div = document.getElementById('curr');
+          div.style.display = "none";
+          div = document.getElementById('temp');
+          div.style.display = "block";
+          }
+          if (choice == 'curr')
+          {
+          div = document.getElementById('dflt');
+          div.style.display = "none"; 
+          div = document.getElementById('temp');
+          div.style.display = "none";
+          div = document.getElementById('tims');
+          div.style.display = "none";
+          div = document.getElementById('curr');
+          div.style.display = "block";            
+          }
+          if (choice == 'tims')
+          {
+          div = document.getElementById('dflt');
+          div.style.display = "none"; 
+          div = document.getElementById('curr');
+          div.style.display = "none";
+          div = document.getElementById('temp');
+          div.style.display = "none";
+          div = document.getElementById('tims');
+          div.style.display = "block";              
+          }
+        }
+      </script>
           <div id="temp" style="display:none">
                 <div class="list-group">
                   <a class="list-group-item active">
@@ -228,15 +219,15 @@
             </ul>
           </div>
           <div id="dflt">
-			<div class="alert alert-info">Please select a sensor</div>
+      
           </div>
         </p>
         </div>
 
       
       </div>
-
-    <div id="accordion">
+<div id="onetest">
+    <div id="accordion" style="float:left">
         <h3>Location</h3>
         <div>
         <p>147 John Olds drive, Schenectady NY   </p>
@@ -261,8 +252,29 @@
         <div>
         <p>Sue Stanson (201 456 8900)</p>
         </div>
-	   </div>
-
+     </div>
+     <div id="myGraph" style="float:right;padding-right:400" >
+     <div class="alert alert-info">Please select a sensor</div>
+      <input type="text" class="deviceid" value="ipl_insurance::3::6::*"  style="display:none"/>
+      <h3>Live Streaming</h3>
+      <div id="sample"></div>
+<br/><br/>      
+<div id="typedChart" style="width: 450px; height: 300px;">
+      
+       </div>
+       <br/>
+       <br/>
+       <div>
+         Start Time::<input type="text" class="startTime" value="" />
+         End Time:: <input type="text" class="endTime" value=""  />
+         <input type="button" class="showhistory" value="showhistory" ></input>
+       <div id="hisChart" style="width: 450px; height: 300px;">
+      
+       </div>
+     </div>
+    </div>
+     </div>
+</div>
       <hr>
 
       <footer>
