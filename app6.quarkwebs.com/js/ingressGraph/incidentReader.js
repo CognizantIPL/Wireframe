@@ -28,7 +28,7 @@ var query1 = equipTable.read().done(function (results) {
 			//auto_refresh2=setInterval(readArray,1000);
            //alert(JSON.stringify(results));
         }, function (err) {
-            alert("Error: " + err);
+           // alert("Error: " + err);
         });
 }
 
