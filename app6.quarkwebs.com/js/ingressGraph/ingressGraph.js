@@ -1,9 +1,11 @@
 
 
 $(document).ready(function(){
+	$(histDataLoad);
+	var auto_refresh=setInterval(histDataLoad,5000);
 	var liveData = [$.gchart.series('Temp', [], 'red', 'ffffff')]; 
 	 var liveAxis = $.gchart.axis('bottom', [], 'black');
-var liveAxisY = $.gchart.axis('left', ['20','30','40','50','60','70'],'black');
+var liveAxisY = $.gchart.axis('left', ['10','20','30','40','50','60'],'black');
 	function liveUpdate() { 
 		
 	    var rotate = function(arr) { 	
@@ -54,7 +56,7 @@ function myLiveStream(jsnData){
 //alert('h12ui'+temp);
                                 var timestamp=jsnData.body[0].timestamp;
                                 liveData[0].data=myRotate(temp);
-                                liveAxis.labels(myRotate1 (timestamp));
+                                liveAxis.labels(myRotate1 (formatDateHour(new Date(timestamp*1000))));
 //liveAxisY.labels(myRotateYaxis(temp));
 
 //alert('hu12i'+timestamp);
@@ -86,15 +88,22 @@ myLiveStream(sData);
 //Stop
 					
 
-					$('.showhistory').live('click', function(){
-			historyData({sid:'1', from:$('.startTime').val(), to:$('.endTime').val(), columns: "nodeid,lat,lng,temperature",constraint:""}, function(hdata){
+					function histDataLoad(){
+						var strTime=Math.round((new Date()).getTime() / 1000);
+var edTime=Math.round((new Date()).getTime() / 1000) - 3600;
+$('#histTime').empty();
+$('#histTime').append("<b>"+formatDateHour(new Date(edTime*1000))+" to "+ formatDateHour(new Date(strTime*1000))+"</b>");
+			historyData({sid:'1', from:edTime, to:strTime, columns: "nodeid,lat,lng,temperature",constraint:""}, function(hdata){
 			     // $('#sample').append(JSON.stringify(hdata));
 var hisData = [$.gchart.series('Temp', [], 'red', 'ffffff')]; 
 	 
-var histYAxis = $.gchart.axis('left', ['20','30','40','50','60','70'],'black');
-var strTime=$('.startTime').val();
-var edTime=$('.endTime').val();
-var histXAxis = $.gchart.axis('bottom', [], 'black');
+var histYAxis = $.gchart.axis('left', ['10','20','30','40','50','60'],'black');
+
+//alert(new Date(strTime*1000).getHours());
+//alert(getMinute(edTime));
+//alert((new Date()).getTime());
+var histXAxis = $.gchart.axis('bottom', ['5','10','15','20','25','30','35','40','45','50','55','60'], 'black');
+var histYAxis = $.gchart.axis('left', ['10','20','30','40','50','60'],'black');
 
 			     //alert(JSON.stringify(hdata));
 	var hisArray=new Array();
@@ -114,7 +123,8 @@ $('#hisChart').gchart({type: 'line', maxValue: 70,
 	    series: hisData, axes: [histXAxis], legend: 'right'});
 			$('#hisChart').gchart('option', {series: hisData, axes: [histXAxis,histYAxis]});      
 			});
-});
+
+}
 	function getMinute(unixTimestamp) {
     var dt = new Date(unixTimestamp * 1000);
 
@@ -126,6 +136,22 @@ $('#hisChart').gchart({type: 'line', maxValue: 70,
 
  return minutes;
 }
+function formatDateHour(timestamps) {
+	var hrs=timestamps.getHours();
+  suffex = (hrs >= 12)? 'pm' : 'am';
+
+    //only -12 from hours if it is greater than 12 (if not back at mid night)
+    hrs = (hrs > 12)? hrs -12 : hrs;
+
+    //if 00 then it is 12 am
+    hrs = (hrs == '00')? 12 : hrs;
+
+    var minut=(timestamps.getMinutes()<10) ? "0"+timestamps.getMinutes():timestamps.getMinutes();
+    var secnd=(timestamps.getSeconds()<10) ? "0"+timestamps.getSeconds():timestamps.getSeconds();
+
+    return hrs+":"+minut+":"+secnd+suffex;
+}
+
 
 });
 
