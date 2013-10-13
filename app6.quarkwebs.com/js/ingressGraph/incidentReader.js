@@ -1,6 +1,6 @@
 var intervalCounter=0;
 var incdntArray=new Array();
-var auto_refresh=setInterval(readIncident,5000);
+var auto_refresh=setInterval(readIncident,8000);
 //var auto_refresh3=setInterval(updateAllToTrue,1000);
 var auto_refresh2;
 
