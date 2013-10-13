@@ -58,14 +58,7 @@
     <script>
      
      
-    $('#types select').change(function() { 
-        $('#typedChart').gchart('option', {type: $('#selectType').val(), 
-            legend: 'right', format: $('#imgFormat').val()}); 
-    });
-      $('#types select').change(function() { 
-        $('#typedHistChart').gchart('option', {type: $('#selectType').val(), 
-            legend: 'right', format: $('#imgFormat').val()}); 
-    });
+    
     </script>
 
     </head>
@@ -101,18 +94,27 @@
       
       <!--Image of the property-->
       
+      <div class="col-lg-4" id="normId">
+          <h2>Alert Center </h2>
+          <p><div class="alert alert-success"><img src="img/tick.png" style="float:left" width="50" height="50">All sensors across all insured locations  are reporting optimal conditions. </div></p>
+        </div>
+        <div class="col-lg-4" id="errId" style="display:none">
+          <h2>Equipment </h2>
+           <input type="button" id="alertbox" style="display:none"></input>
+          <p><div class="alert alert-warning"><img src="img/symbols-warning.png" style="float:left" width="50" height="50"> <div class="quip"></div></div><p><a class="btn btn-default" onclick="resolveThis()">Resolve Incident &raquo;</a></p></p>
+       </div>
       
-        <div class="col-lg-4">
-          <h2>Alert Center</h2>
-          <p class="alert alert-danger"><img src="img/symbols-warning.png" style="float:left" width="40" height="40">Centrifugal Machine 1 and 4 reported potential malfunction</p>
-          
+       <!-- <div class="col-lg-4">
+          <h2></h2>
+          <img id="warningbox" src="img/tick.png" style="float:left" width="40" height="40">
+         
           <div class="progress">
           <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
             <span class="sr-only">40% Operational</span>
           </div>
         </div>
           
-        </div>
+        </div>-->
         <div class="col-lg-4">
           <h2>Equipment Summary</h2>
             <ul class="list-group">
@@ -154,7 +156,7 @@
       </map> 
       
               <div class="col-lg-4">
-          <h2 >Sensor Reading</h2>
+          
           <p>
         <script>
         function showDiv(choice) {
@@ -225,9 +227,10 @@
         </div>
 
       
-      </div>
+      
 <div id="onetest">
     <div id="accordion" style="float:left">
+      <h2 >Sensor Reading</h2>
         <h3>Location</h3>
         <div>
         <p>147 John Olds drive, Schenectady NY   </p>
@@ -256,22 +259,26 @@
      <div id="myGraph" style="float:right;padding-right:400" >
      <div class="alert alert-info">Please select a sensor</div>
       <input type="text" class="deviceid" value="ipl_insurance::3::6::*"  style="display:none"/>
+      <div>
+       <!--   Start Time::<input type="text" class="startTime" value="" />
+         End Time:: <input type="text" class="endTime" value=""  /> -->
+         <!--<input type="button" class="showhistory" value="showhistory" ></input>-->
+      <h3>History Data:</h3>
+      <div id="histTime"></div>
+       <div id="hisChart" style="width: 450px; height: 300px;">
+      
+       </div>
+     </div>
+     <br/><br/>      
       <h3>Live Streaming</h3>
       <div id="sample"></div>
-<br/><br/>      
+
 <div id="typedChart" style="width: 450px; height: 300px;">
       
        </div>
        <br/>
        <br/>
-       <div>
-         Start Time::<input type="text" class="startTime" value="" />
-         End Time:: <input type="text" class="endTime" value=""  />
-         <input type="button" class="showhistory" value="showhistory" ></input>
-       <div id="hisChart" style="width: 450px; height: 300px;">
-      
-       </div>
-     </div>
+       
     </div>
      </div>
 </div>
