@@ -200,6 +200,59 @@
 		      
         <!--/Gauge-->
        
+       
+        <!--Graph1-Score Patterns Across Categories-->
+		    <script type="text/javascript">
+		        $(document).ready(function () {
+				
+		            // prepare chart data
+		            var  sampleData = [
+		                    { Day:'P&E', Total:160, Obtained:89.60},
+		                    { Day:'WC', Total:240, Obtained:140.80},
+		                    { Day:'Auto', Total:80, Obtained:37.33},
+		                    { Day:'Financial', Total:240, Obtained:144.00},
+		                    { Day:'3rd Party Rating', Total:80, Obtained:56.00}
+		                ];
+						
+		            // prepare jqxChart settings
+		            var settings = {
+		                title: "Score Patterns across categories",
+		                description: " ",
+		                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+		                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+		                source: sampleData,
+		                categoryAxis:
+		                    {
+		                        dataField: 'Day',
+		                        showGridLines: false
+		                    },
+		                colorScheme: 'scheme01',
+		                seriesGroups:
+		                    [
+		                        {
+		                            type: 'line',
+		                            columnsGapPercent: 30,
+		                            seriesGapPercent: 0,
+		                            valueAxis:
+		                            {
+		                                minValue: 0,
+		                                maxValue: 300,
+		                                unitInterval: 50,
+		                                description: 'Score'
+		                            },
+		                            series: [
+		                                    { dataField: 'Total', displayText: 'Total'},
+		                                    { dataField: 'Obtained', displayText: 'Obtained'},
+		                                ]
+		                        }
+		                    ]
+		            };
+		            
+		            // select the chartContainer DIV element and render the chart.
+		            $('#chartContainer').jqxChart(settings);
+		        });
+		    </script>
+		<!--/Graph1-Score Patterns Across Categories-->            
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -227,31 +280,44 @@
 
     <div class="container">
      <div class="panel panel-primary">
-     <div class="panel-heading">
-     <h3 class="panel-title">Overall</h3>
+	     <div class="panel-heading">
+	     <h3 class="panel-title" style="padding-bottom: 7px"><b>Overall Risk Score </b> <code> 467.73/800 </code> </h3> 
+	     
+			<div class="progress">
+			  <div class="progress-bar progress-bar-success" style="width: 35%">
+			    <span class="sr-only">35% Complete (success)</span>
+			  </div>
+			  <div class="progress-bar progress-bar-warning" style="width: 20%">
+			    <span class="sr-only">20% Complete (warning)</span>
+			  </div>
+			  <div class="progress-bar progress-bar-danger" style="width: 3.46%">
+			    <span class="sr-only">10% Complete (danger)</span>
+			  </div>
+			</div>
+	     </div>
+	     <div class="panel-body">
+	       <div class="row">   
+		      <div class="col-md-4">	 
+			  	<div style="float: left;" id="gaugeContainer1"></div>
+		      </div>
+		      <div class="col-md-4">	 
+			  	<div style="float: left;" id="gaugeContainer2"></div>
+		      </div>
+		      <div class="col-md-4">	 
+			  	<div style="float: left;" id="gaugeContainer3"></div>
+		      </div>    
+	    	  <div class="col-md-4">
+	    	  	<div style="float: left;" id="gaugeContainer4"></div>
+	    	  </div>
+	    	  <div class="col-md-4">
+	    	  	<div style="float: left;" id="gaugeContainer5"></div>
+	    	  </div>
+	       </div>
+	     </div>
      </div>
-     <div class="panel-body">
-       <div class="row">   
-	      <div class="col-md-4">	 
-		  	<div style="float: left;" id="gaugeContainer1"></div>
-	      </div>
-	      <div class="col-md-4">	 
-		  	<div style="float: left;" id="gaugeContainer2"></div>
-	      </div>
-	      <div class="col-md-4">	 
-		  	<div style="float: left;" id="gaugeContainer3"></div>
-	      </div>    
-       </div>
-       <div class="row">
-    	  <div class="col-md-4">
-    	  	<div style="float: left;" id="gaugeContainer4"></div>
-    	  </div>
-    	  <div class="col-md-4">
-    	  	<div style="float: left;" id="gaugeContainer5"></div>
-    	  </div>
-       </div>
-     </div>
-     </div>
+     <div class="row">
+     	<div id='chartContainer' style="width:600px; height: 400px"/></div>
+     </div>	
      <div class="row" >
 		 <div class="col-md-4">		
 			 <div class="panel panel-primary">
