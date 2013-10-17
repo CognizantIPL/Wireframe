@@ -36,10 +36,14 @@
 		    <link rel="stylesheet" href="jqwidgets/jqx.blackberry.css" type="text/css" />
 		    <link rel="stylesheet" href="jqwidgets/jqx.android.css" type="text/css" />
 		    <link rel="stylesheet" href="jqwidgets/jqx.mobile.css" type="text/css" />
-		    <link rel="stylesheet" href="jqwidgets/jqx.fresh.css" type="text/css" />			    
+		    <link rel="stylesheet" href="jqwidgets/jqx.fresh.css" type="text/css" />	
+		    <link rel="stylesheet" href="jqwidgets/jqx.web.css" type="text/css" />
     		<script type="text/javascript" src="jqwidgets/simulator.js"></script>
     		
 		    <script type="text/javascript" src="jqwidgets/jquery-1.10.2.min.js"></script>
+		    
+
+		    
 		    <script type="text/javascript" src="jqwidgets/gettheme.js"></script>
 		    <script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
 		    <script type="text/javascript" src="jqwidgets/jqxdata.js"></script>
@@ -48,7 +52,8 @@
 		    <script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
 		    <script type="text/javascript" src="jqwidgets/jqxcheckbox.js"></script>
 		    <script type="text/javascript" src="jqwidgets/jqxradiobutton.js"></script>
-		    <script type="text/javascript" src="jqwidgets/jqxexpander.js"></script>      
+		    <script type="text/javascript" src="jqwidgets/jqxexpander.js"></script>
+		    <script type="text/javascript" src="jqwidgets/jqxtabs.js"></script>      
 		    
 		    <script type="text/javascript">
 		    /*gaugeContainer1*/
@@ -59,8 +64,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:300,
-		                height:300,
+		                width:250,
+		                height:250,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -90,8 +95,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:300,
-		                height:300,
+		                width:250,
+		                height:250,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -119,8 +124,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:300,
-		                height:300,
+		                width:250,
+		                height:250,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -148,8 +153,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:300,
-		                height:300,
+		                width:250,
+		                height:250,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -177,8 +182,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:300,
-		                height:300,
+		                width:250,
+		                height:250,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -255,20 +260,71 @@
 		    </script>
 		<!--/Graph1-Score Patterns Across Categories-->    
 		
-		<!--Expander-->
+		<!--Tabs-->
 		    <script type="text/javascript">
 		        $(document).ready(function () {
-		            // Create jqxExpander
-		            $("#jqxexpander").jqxExpander({theme: 'fresh', width: 350, height: 175 });
-		            // bind to expanded event.
-		            $("#jqxexpander").bind('expanded', function (event) {
-		            });
-		            // bind to collapsed event.
-		            $("#jqxexpander").bind('collapsed', function (event) {
-		            });
+		            // create jqxtabs.
+		            $('#jqxtabs').jqxTabs({ width: 800, height: 100, theme: 'web' });
 		        });
 		    </script>		
-		<!--/Expander-->
+		<!--/Tabs-->
+		
+        <!--Graph2-Sensor Data-->
+		    <script type="text/javascript">
+		        $(document).ready(function () {
+				
+		            // prepare chart data
+		            var  sampleData = [
+		                    { Day:'Temp-Failure Zone', NY:25, Raleigh:69, Hartford:5},
+		                    { Day:'Temp-Safe Zone', NY:25, Raleigh:31, Hartford:5},
+		                    { Day:'Pressure-Failure Zone', NY:23, Raleigh:53, Hartford:6},
+		                    { Day:'Pressure-Safe Zone', NY:27, Raleigh:47, Hartford:4},
+		                    { Day:'RPM-Failure Zone', NY:14, Raleigh:28, Hartford:3},
+		                    { Day:'RPM-Safe Zone', NY:36, Raleigh:72, Hartford:7}
+		                ];
+						
+		            // prepare jqxChart settings
+		            var settings = {
+		                title: "Sensor Data Analysis",
+		                description: " ",
+		                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+		                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+		                source: sampleData,
+		                categoryAxis:
+		                    {
+		                        dataField: 'Day',
+		                        showGridLines: false
+		                    },
+		                colorScheme: 'scheme01',
+		                animationDuration: 5000,
+		                seriesGroups:
+		                    [
+		                        {
+		                            type: 'column',
+		                            columnsGapPercent: 30,
+		                            seriesGapPercent: 0,
+		                            valueAxis:
+		                            {
+		                                minValue: 0,
+		                                maxValue: 80,
+		                                unitInterval: 20,
+		                                description: 'Score'
+		                            },
+		                            series: [
+		                                    { dataField: 'NY', displayText: 'NY'},
+		                                    { dataField: 'Raleigh', displayText: 'Raleigh'},
+		                                    { dataField: 'Hartford', displayText: 'Hartford'},
+		                                ]
+		                        }
+		                    ]
+		            };
+		            
+		            // select the chartContainer DIV element and render the chart.
+		            $('#chartContainer2').jqxChart(settings);
+		        });
+		    </script>
+		<!--/Graph2-Sensor Data-->   		
+		
 		        
     </head>
     <body>
@@ -296,18 +352,18 @@
     </div>
 
     <div class="container">
-     <div class="panel panel-primary">
+     <div class="panel panel-primary" style="width: 85%">
 	     <div class="panel-heading">
 	     <h3 class="panel-title" style="padding-bottom: 7px"><b>Overall Risk Score </b> <code> 467.73/800 </code> </h3> 
 	     
 			<div class="progress">
-			  <div class="progress-bar progress-bar-success" style="width: 35%">
+			  <div class="progress-bar progress-bar-danger" style="width: 35%">
 			    <span class="sr-only">35% Complete (success)</span>
 			  </div>
 			  <div class="progress-bar progress-bar-warning" style="width: 20%">
 			    <span class="sr-only">20% Complete (warning)</span>
 			  </div>
-			  <div class="progress-bar progress-bar-danger" style="width: 3.46%">
+			  <div class="progress-bar progress-bar-success" style="width: 3.46%">
 			    <span class="sr-only">10% Complete (danger)</span>
 			  </div>
 			</div>
@@ -332,103 +388,85 @@
 	       </div>
 	     </div>
      </div>
+     
      <div class="row">
-     	<div class="col-md-8">
-     		<div id='chartContainer' style="width:600px; height: 400px"/></div>
-     	</div>
-     	<div class="col-md-3">
-		    <div id='jqxexpander'>
-		        <!--Header-->
-		        <div>Underwriter's Report</div>
-		        <!--Content-->
+     	<div class="col-md-12">
+		    <div id='jqxtabs'>
+		        <ul style='margin-left: 20px;'>
+		            <li>Property & Equipment</li>
+		            <li>Workers Compensation</li>
+		            <li>Commercial Auto</li>
+		            <li>Financial</li>
+		            <li>3rd Party Ratings</li>
+		        </ul>
 		        <div>
+		            <ol>
+		            	<li>Score obtained - <code>140.8</code></li>
+		            	<li>Number of Insured Property - <code>3</code></li>
+		            	<li>Number of Insured Equipments - <code>20</code></li>
+		            </ol>
+		        </div>
+		        <div>
+		            <ol>
+		            	<li>Score obtained - <code>89.6</code></li>
+		            	<li>Total No. of Workers Insured - <code>22,200</code></li>
+		            </ol>
+		        </div>
+		        <div>
+		            <ol>
+		            	<li>Score obtained - <code>37.33</code></li>
+		            	<li>Annual Miles Clocked - <code>8,500,000</code></li>
+		            </ol>
+		        </div>
+		        <div>
+		            <ol>
+		            	<li>Score obtained - <code>144</code></li>
+		            	<li>Ownership Equity % - <code>Between 50-74</code></li>
+		            	<li>Current Ratios - <code>Between 1-2.9</code></li>
+		            </ol>
+		        </div>
+		        <div>
+		            <ol>
+		            	<li>Score obtained - <code>56</code></li>
+		            	<li>BBB Rating - <code>A</code></li>
+		            	<li>Paydex Rating - <code>60-80</code></li>
+		            </ol>
+		        </div>
+		    </div>  
+		 </div>      	
+     </div>
+     </br>
+     
+     <div class="row">
+     	<div class="col-md-10">
+     		<div id='chartContainer' style="width:800px; height: 400px"/></div>
+     	</div>
+     </div>	
+	 
+	 <div class="row">
+	 	
+     	<div  style="position: fixed; bottom: 0; right: 0;width: 200px;">
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Underwriter's Report</h3>
+			  </div>
+			  <div class="panel-body">
 		            <ol>
 		            	<li>Max Probability of Loss exists for Category Commercial Auto</li>
 		            	<li>Financial & 3rd Party Ratings are good</li>
 		            	<li>As per sensor data, Raleigh location is prone to more Failures</li>
 		            	<li>Max Incidents resulting in loss belongs to Workers Comp & Commercial Auto</li>
 		            </ol>
-		        </div>
-		    </div>     		
-     	</div>
-     </div>	
-     <div class="row" >
-		 <div class="col-md-4">		
-			 <div class="panel panel-primary">
-			  <div class="panel-heading">
-				<h3 class="panel-title">Financials</h3>
 			  </div>
-			    <div class="panel-body">
-		           <li>Ownership Equity - 60%</li>
-		           <li>Current Ratios(+loan) - 0.6</li>
-		           <li>Bankruptcy Risk - 2</li>
-		        </div>
-		     </div>	 	
-		 </div> 
-		 
-		 <div class="col-md-4">		
-			 <div class="panel panel-primary">
-			  <div class="panel-heading">
-				<h3 class="panel-title">Property and Equipment</h3>
-			  </div>
-			    <div class="panel-body">
-		           <li>Property Value - 100M</li>
-		           <li>Equipment Value - 50M</li>
-		           <li>Mortgage Amount - 30M</li>
-		           <li>Claim Payout - 1M</li>
-		           <li>Equipment Risk Score - Maintenance score+number of instances where the failure zone is triggered</li>
-		           <li>Property Risk Score - Based on class of construction, earth zone etc…</li>
-		        </div>
-		     </div>	 	
-		 </div> 
-		 
-		 <div class="col-md-4">		
-			 <div class="panel panel-primary">
-			  <div class="panel-heading">
-				<h3 class="panel-title">Commercial Auto</h3>
-			  </div>
-			    <div class="panel-body">
-		           <li>Vehilcles - 500</li>
-		           <li>Annual Miles Driven/vehicle - 100000</li>
-		           <li>Claim Payout - 200K</li>
-		           <li>Auto Risk score - number of accidents/incidents per 100000 miles, speed violations per 100000 miles</li>
-		        </div>
-		     </div>	 	
-		 </div> 
-		 
-	 </div>	  
-	 
-	 <div class="row">
-	 
-	 	 <div class="col-md-6">		
-			 <div class="panel panel-primary">
-			  <div class="panel-heading">
-				<h3 class="panel-title">Workers Compensation</h3>
-			  </div>
-			    <div class="panel-body">
-		           <li>Number of workers - 5000</li>
-		           <li>Workers per square feet - 10</li>
-		           <li>Claim Payout - 2M</li>
-		           <li>% of workers undergoing safety training - 60%</li>
-		           <li>Average Number of Hours worked per worker - 9.5</li>
-		           <li>Workers Comp Risk score - </li>
-		        </div>
-		     </div>	 	
-		 </div> 
-	 	
-	 	 <div class="col-md-6">		
-			 <div class="panel panel-primary">
-			  <div class="panel-heading">
-				<h3 class="panel-title">External ratings</h3>
-			  </div>
-			    <div class="panel-body">
-		           <li>Financial Credit Rating - </li>
-		           <li>Business Burea Rating - </li>
-		        </div>
-		     </div>	 	
-		 </div>
-	 	
+			</div>     		  		
+     	</div>	 	 
 	 </div>
+	 
+     <div class="row">
+     	<div class="col-md-10">
+     		<div id='chartContainer2' style="width:800px; height: 400px"/></div>
+     	</div>
+     </div>		 
       <hr>
 
       <footer>
@@ -438,7 +476,6 @@
 
 
         <script src="js/vendor/bootstrap.min.js"></script>
-
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
