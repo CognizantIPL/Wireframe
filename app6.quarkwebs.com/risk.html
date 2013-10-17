@@ -100,7 +100,7 @@
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
-		                caption: { offset: [0, -25], value: 'Property & Equipment', position: 'bottom' },
+		                caption: { offset: [0, -25], value: 'P & E', position: 'bottom' },
 		                colorScheme: 'scheme05',
 		                animationDuration: 3600
 		            });
@@ -158,7 +158,7 @@
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
-		                caption: { offset: [0, -25], value: 'Workers Compensation', position: 'bottom' },
+		                caption: { offset: [0, -25], value: 'WC', position: 'bottom' },
 		                colorScheme: 'scheme05',
 		                animationDuration: 3600
 		            });
@@ -308,7 +308,7 @@
 		                                minValue: 0,
 		                                maxValue: 80,
 		                                unitInterval: 20,
-		                                description: 'Score'
+		                                description: 'Temperature'
 		                            },
 		                            series: [
 		                                    { dataField: 'NY', displayText: 'NY'},
@@ -324,7 +324,59 @@
 		        });
 		    </script>
 		<!--/Graph2-Sensor Data-->   		
-		
+
+        <!--Graph3-Incident Data-->
+		    <script type="text/javascript">
+		        $(document).ready(function () {
+				
+		            // prepare chart data
+		            var  sampleData = [
+		                    { Day:'Property & Equipment', Avoidable_Incident:1, Unavoidable_Incident:2},
+		                    { Day:'Workers Compensation', Avoidable_Incident:5, Unavoidable_Incident:3},
+		                    { Day:'Commercial Auto', Avoidable_Incident:2, Unavoidable_Incident:8}
+		                    
+		                ];
+						
+		            // prepare jqxChart settings
+		            var settings = {
+		                title: "Incident Analysis - 1 year",
+		                description: " ",
+		                padding: { left: 5, top: 5, right: 5, bottom: 5 },
+		                titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+		                source: sampleData,
+		                categoryAxis:
+		                    {
+		                        dataField: 'Day',
+		                        showGridLines: false
+		                    },
+		                colorScheme: 'scheme09',
+		                animationDuration: 5000,
+		                seriesGroups:
+		                    [
+		                        {
+		                            type: 'stackedcolumn',
+		                            columnsGapPercent: 30,
+		                            seriesGapPercent: 0,
+		                            valueAxis:
+		                            {
+		                                minValue: 0,
+		                                maxValue: 25,
+		                                unitInterval: 5,
+		                                description: 'Count'
+		                            },
+		                            series: [
+		                                    { dataField: 'Avoidable_Incident', displayText: 'Avoidable_Incident'},
+		                                    { dataField: 'Unavoidable_Incident', displayText: 'Unavoidable_Incident'}
+		                                ]
+		                        }
+		                    ]
+		            };
+		            
+		            // select the chartContainer DIV element and render the chart.
+		            $('#chartContainer3').jqxChart(settings);
+		        });
+		    </script>
+		<!--/Graph3-Incident Data-->  		
 		        
     </head>
     <body>
@@ -443,30 +495,38 @@
      	</div>
      </div>	
 	 
+ 
+     <div class="row">
+     	<div class="col-md-10">
+     		<div id='chartContainer2' style="width:800px; height: 400px"/></div>
+     	</div>
+     </div>		 
+     
+     <div class="row">
+     	<div class="col-md-10">
+     		<div id='chartContainer3' style="width:800px; height: 400px"/></div>
+     	</div>
+     </div>	     
+     
 	 <div class="row">
 	 	
-     	<div  style="position: fixed; bottom: 0; right: 0;width: 200px;">
+     	<div  style="position: fixed; bottom: 0; right: 0;width: 175px;">
 			<div class="panel panel-primary">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Underwriter's Report</h3>
 			  </div>
 			  <div class="panel-body">
 		            <ol>
-		            	<li>Max Probability of Loss exists for Category Commercial Auto</li>
-		            	<li>Financial & 3rd Party Ratings are good</li>
-		            	<li>As per sensor data, Raleigh location is prone to more Failures</li>
-		            	<li>Max Incidents resulting in loss belongs to Workers Comp & Commercial Auto</li>
+		            	<li style="font-size: .9em">Max Probability of Loss exists for Category Commercial Auto</li>
+		            	<li style="font-size: .9em">Financial & 3rd Party Ratings are good</li>
+		            	<li style="font-size: .9em">As per sensor data, Raleigh location is prone to more Failures</li>
+		            	<li style="font-size: .9em">Max Incidents resulting in loss belongs to Workers Comp & Commercial Auto</li>
 		            </ol>
 			  </div>
 			</div>     		  		
      	</div>	 	 
-	 </div>
-	 
-     <div class="row">
-     	<div class="col-md-10">
-     		<div id='chartContainer2' style="width:800px; height: 400px"/></div>
-     	</div>
-     </div>		 
+	 </div>     
+     
       <hr>
 
       <footer>
