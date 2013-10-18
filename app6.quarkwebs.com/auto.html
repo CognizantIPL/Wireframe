@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="js\ingressGraph\incidentReader.js"></script> 
+        <script src="js\ingressGraph\autoincidentReader.js"></script> 
          <script>
 			function goBack()
 			  {
@@ -31,6 +33,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="js\service\MobileServices.Web-1.0.0.min.js"></script>
         <script>
         $(function() {
         $( "#accordion" ).accordion({
@@ -62,7 +65,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 
-		  var contentString = '<img src=img/loc_1.jpg /><img src=img/loc_2.jpg />';
+		  var contentString = '<a href="crashreport.html?user=insured&vehicleNo=T201"> Generate Report </a>';
  var infowindow = new google.maps.InfoWindow({
       content: contentString
   });
@@ -117,6 +120,7 @@ function initialize() {
           <p class="alert alert-danger"><img src="img/cross.png"  width="50" height="50">Truck 14 has a emergency alert</p>
          
         </div>
+        <!-- <input type="textbox" id="VehicleNo"> -->
         <div class="col-lg-4">
           <h2>Alert Steve</h2>
       <div id="accordion">
