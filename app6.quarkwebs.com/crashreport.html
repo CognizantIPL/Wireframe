@@ -57,7 +57,7 @@
 function initialize() {
   var myLatlng = new google.maps.LatLng(34.02000,-118.15300);
   var mapOptions = {
-    zoom: 15,
+    zoom: 17,
     center: myLatlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
@@ -65,10 +65,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 
-		  var contentString = '<a href="crashreport.html?user=insured&vehicleNo=T201"> Generate Report </a>';
- var infowindow = new google.maps.InfoWindow({
-      content: contentString
-  });
+		  
 
   var marker = new google.maps.Marker({
       position: myLatlng,
@@ -88,7 +85,7 @@ function initialize() {
 
 
     </head>
-    <body>
+    <body onload="readIncidentTable()">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -108,39 +105,63 @@ function initialize() {
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Commercial Auto Real Time Dashboard</h1>
+        <h1>Crash Report</h1>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
+      <form>
       <div class="row">
         <div class="col-lg-4">
           <h2>Alert Center</h2>
-          <p class="alert alert-danger"><img src="img/cross.png"  width="50" height="50">Truck 14 has a emergency alert</p>
+          <p class="alert alert-danger"><img src="img/cross.png"  width="50" height="50">Truck has a emergency</p>
          
         </div>
-        <!-- <input type="textbox" id="VehicleNo"> -->
         <div class="col-lg-4">
-          <h2>Alert Steve</h2>
+          <h2>Alert</h2>
       <div id="accordion">
         <h3>Crash Report</h3>
         <div>
-        <p>GPS Location : -72.45656N, 65.454523W</p>
-        <p>State Of Truck:  Front Wheel Axle broken</p>
-        <p>State Of Driver – Safe but dazed</p>
-        <p>Speed : 85 mph</p>
+        <table>
+          <tr>
+            <td><b>Truck Number </b> </td>
+            <td id="trucknumber" value=""> </td>
+          </tr>
+          <tr>
+            <td><b>Latitude  </b></td>
+            <td id="latitude" value=""> </td>
+          </tr>
+          <tr>
+            <td><b>Longitude  </b></td>
+            <td id="longitude" value=""> </td>
+          </tr>
+          <tr>
+            <td><b>Message  </b></td>
+            <td id="message" value=""> </td>
+          </tr>
+          <tr>
+            <td><b>Speed  </b></td>
+            <td id="speed" value=""> </td>
+          </tr>
+          <tr>
+            <td><b>Address  </b></td>
+            <td id="address" value=""> </td>
+          </tr>
+            </table>
         </div>
-        <h3>Actions Required</h3>
-        <div>
-        <p>Call Driver    </p>
-        <p>Report Claim</p>
         </div>
-	   </div>
-      
        </div>
       </div>
-      
+      <br/><br/>
+      <input type="hidden" id="veh_id" value=""/>
+      <div style="position:absolute; left:40%;">
+      <input type="button" value="Process Claim" id="process" onClick="handleClaim(this.id)"/>
+      <input type="button" value="Cancel" id="cancel" onClick="handleClaim(this.id)"/>
+      <input type="button" value="Complete Claim" id="complete" onClick="handleClaim(this.id)"/>
+      <input type="button" value="Reject" id="reject" onClick="handleClaim(this.id)"/>
+    </div><br/><br/><br/><br/>
+  </form>
       <div class="row">
  
       
@@ -159,11 +180,12 @@ function initialize() {
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
 		<!--Google Map start-->
-        <div id="map-canvas"></div>
+        <div id="map-canvas" style="width:48%;float:left;"></div>
+        <img src="img/images.png" style="width:48%;align:right;float:right;"/>
  		<!--Google Map start-->
-              <hr>
+            
       <footer>
-        <p>&copy; Time Travelers 2013</p>
+        
       </footer>
     </body>
 </html>
