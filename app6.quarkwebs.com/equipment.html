@@ -101,7 +101,8 @@
         <div class="col-lg-4" id="errId" style="display:none">
           <h2>Equipment </h2>
            <input type="button" id="alertbox" style="display:none"></input>
-          <p><div class="alert alert-warning"><img src="img/symbols-warning.png" style="float:left" width="50" height="50"> <div class="quip"></div></div><p><a class="btn btn-default" onclick="resolveThis()">Resolve Incident &raquo;</a></p></p>
+           <input type="button" id="dvaue" style="display:none"></input>
+          <p><div class="alert alert-warning"><img src="img/symbols-warning.png" style="float:left" width="50" height="50"> <div class="quip"></div></div><p><a class="btn btn-default" onclick="resolveThis();">Resolve Incident &raquo;</a></p></p>
        </div>
       
        <!-- <div class="col-lg-4">
@@ -262,7 +263,8 @@
       <div>
        <!--   Start Time::<input type="text" class="startTime" value="" />
          End Time:: <input type="text" class="endTime" value=""  /> -->
-         <!--<input type="button" class="showhistory" value="showhistory" ></input>-->
+         <!-- <input type="button" class="showhistory" value="showhistory" onclick="updateAllToTrue();" ></input>
+         <input type="button" class="showhistory" value="showhistory" onclick="readIncident();" ></input> -->
       <h3>History Data:</h3>
       <div id="histTime"></div>
        <div id="hisChart" style="width: 450px; height: 300px;">
