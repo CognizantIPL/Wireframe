@@ -13,21 +13,22 @@ aie.controller('AIETrucksController', function AIETrucksController($scope, $time
 
 
     AIEMobileServices.getTrackingDataForAllTrucks().then(function (result) {
+        var marker,i,infowindow = new google.maps.InfoWindow();
         for (var i = 0; i < result.length; i++) {
-            var latLng = new google.maps.LatLng(result[i].latitude, result[i].longitude);
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(result[i].latitude, result[i].longitude),
                 map: map,
-                position: latLng,
-                title: 'AIE Truck',
-                animation: google.maps.Animation.DROP
+                title: result[i].address
             });
-            var infowindow = new google.maps.InfoWindow({
-                content: result[i].truck_number
-            });
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(result[i].truck_number);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
         };
     });
    
 });
+
