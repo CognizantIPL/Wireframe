@@ -13,12 +13,21 @@ aie.controller('AIETrucksController', function AIETrucksController($scope, $time
 
 
     AIEMobileServices.getTrackingDataForAllTrucks().then(function (result) {
-        var marker,i,infowindow = new google.maps.InfoWindow();
+        var marker, i,markerImage, infowindow = new google.maps.InfoWindow();
         for (var i = 0; i < result.length; i++) {
+            markerImage = new google.maps.MarkerImage(
+                             'http://localhost:22139/app6.quarkwebs.com/img/darkgreen_MarkerA.png',
+                             new google.maps.Size(20, 34), //size
+                             null, //origin
+                             null, //anchor
+                             new google.maps.Size(20, 34) //scale
+                             );
+
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(result[i].latitude, result[i].longitude),
                 map: map,
-                title: result[i].address
+                title: result[i].address,
+                icon: markerImage
             });
 
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -29,6 +38,6 @@ aie.controller('AIETrucksController', function AIETrucksController($scope, $time
             })(marker, i));
         };
     });
-   
+
 });
 
