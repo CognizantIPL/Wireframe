@@ -16,7 +16,7 @@ aie.controller('AIETrucksController', function AIETrucksController($scope, $time
         var marker, i,markerImage, infowindow = new google.maps.InfoWindow();
         for (var i = 0; i < result.length; i++) {
             markerImage = new google.maps.MarkerImage(
-                             'http://localhost:22139/app6.quarkwebs.com/img/darkgreen_MarkerA.png',
+                             'http://aiewireframe.azurewebsites.net/img/darkgreen_MarkerA.png',
                              new google.maps.Size(20, 34), //size
                              null, //origin
                              null, //anchor
