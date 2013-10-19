@@ -16,7 +16,6 @@ for(i=0;i<jsonData1.length;++i){
    document.getElementById("errId").style.display="block";
    document.getElementById("errId").focus();
    document.getElementById("alertbox").value=jsonData1[i].equipmentId;
-   document.getElementById("dvaue").value=jsonData1[i].id;
    $('.quip').empty();
    $('.quip').append("AIE has estimated potential failure on Equipment with Equip-ID: "+jsonData1[i].equipmentId +" This may require immediate attention. All other equipment are reporting optimal conditions.");
    document.getElementById("normId").style.display="none";
