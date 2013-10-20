@@ -1,20 +1,21 @@
 ﻿'use strict';
+var _trucks_in_Map = [];
+var auto_refresh = setInterval(ReadTruckIncident, 5000);
+var mapOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(41.5, -72.6),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+var map = new google.maps.Map(document.getElementById("map_canvas"),
+  mapOptions);
 
 aie.controller('AIETrucksController', function AIETrucksController($scope, $timeout, $log, AIEMobileServices) {
     google.maps.visualRefresh = true;
 
-    var mapOptions = {
-        zoom: 4,
-        center: new google.maps.LatLng(41.5, -72.6),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-      mapOptions);
-
-
     AIEMobileServices.getTrackingDataForAllTrucks().then(function (result) {
-        var marker, i,markerImage, infowindow = new google.maps.InfoWindow();
+        var marker, i, markerImage, infowindow = new google.maps.InfoWindow();
         for (var i = 0; i < result.length; i++) {
+            _trucks_in_Map[i] = result[i].truck_number;
             markerImage = new google.maps.MarkerImage(
                              'http://aiewireframe.azurewebsites.net/img/darkgreen_MarkerA.png',
                              new google.maps.Size(20, 34), //size
@@ -37,7 +38,83 @@ aie.controller('AIETrucksController', function AIETrucksController($scope, $time
                 }
             })(marker, i));
         };
-    });
 
+        if (_trucks_in_Map && _trucks_in_Map.length > 0) {
+            var temp = ArrNoDupe(_trucks_in_Map);
+            for (var a = 0; a <= temp.length - 1; a++) {
+                ReadTruckIncident(temp[a]);
+            }
+        }
+    });
+   
 });
 
+function ArrNoDupe(a) {
+    var temp = {};
+    for (var i = 0; i < a.length; i++)
+        temp[a[i]] = true;
+    var r = [];
+    for (var k in temp)
+        r.push(k);
+    return r;
+}
+
+
+function ReadTruckIncident(truck_number) {
+    clearInterval(auto_refresh);
+    var azureClient1 = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
+    var truckTable = azureClient1.getTable('smart_truck_incident');
+
+    var query1 = truckTable.read().done(function (results) {
+        clearInterval(auto_refresh);
+        clearInterval(auto_refresh);
+        clearInterval(auto_refresh);
+        readArray(results, truck_number);
+
+    }, function (err) {
+        // alert("Error: " + err);
+    });
+
+}
+
+function readArray(jsonData1, truck_number) {
+    //clearInterval(auto_refresh2);
+    var trucks = getmatchingTrucks(jsonData1, 'truck_number', truck_number);
+    var marker, infowindow = new google.maps.InfoWindow();
+    var link = "<a>AIE Truck:</a>";
+    for (var i = 0; i < trucks.length; ++i) {
+        if (trucks[i].activeIndicator === null) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(trucks[i].latitude, trucks[i].longitude),
+                    map: map,
+                    title: trucks[i].address,
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        var anchorElem = document.createElement('a');
+                        var yourLink = 'http://aiewireframe.azurewebsites.net/crashreport.html?user=insured&vehicleNo=' + trucks[i].truck_number
+                        anchorElem.setAttribute("href", yourLink);
+                        anchorElem.innerHTML = trucks[i].truck_number;
+                        infowindow.setContent(anchorElem);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+                break;
+            }
+      
+    }
+}
+
+function getmatchingTrucks(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getmatchingTrucks(obj[i], key, val));
+        } else if (i == key && obj[key] == val) {
+            objects.push(obj);
+        }
+    }
+    return objects;
+}
