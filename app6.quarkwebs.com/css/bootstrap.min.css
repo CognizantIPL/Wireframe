@@ -4558,11 +4558,11 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
 }
 
 .jumbotron {
-    /*padding: 30px;
+    padding: 30px;
     margin-bottom: 30px;
     font-size: 21px;
     font-weight: 200;
-    line-height: 2.1428571435;*/
+    line-height: 2.1428571435;
     color: inherit;
     background-color: #eee;
 }
@@ -4580,7 +4580,7 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     border-radius: 6px;
 }
 
-/*@media screen and (min-width:768px) {
+@media screen and (min-width:768px) {
     .jumbotron {
         padding-top: 48px;
         padding-bottom: 48px;
@@ -4594,7 +4594,7 @@ a.list-group-item.active > .badge, .nav-pills > .active > a > .badge {
     .jumbotron h1 {
         font-size: 63px;
     }
-}*/
+}
 
 .thumbnail {
     display: inline-block;
