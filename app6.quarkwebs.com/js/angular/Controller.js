@@ -1,13 +1,12 @@
 ﻿'use strict';
 var _trucks_in_Map = [];
-var auto_refresh = setInterval(ReadTruckIncident, 5000);
+//var auto_refresh = setInterval(ReadTruckIncident, 5000);
 var mapOptions = {
     zoom: 8,
     center: new google.maps.LatLng(41.5, -72.6),
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
-var map = new google.maps.Map(document.getElementById("map_canvas"),
-  mapOptions);
+var map = new google.maps.Map(document.getElementById("map_canvas"),  mapOptions);
 
 aie.controller('AIETrucksController', function AIETrucksController($scope, $timeout, $log, AIEMobileServices) {
     google.maps.visualRefresh = true;
@@ -61,29 +60,23 @@ function ArrNoDupe(a) {
 
 
 function ReadTruckIncident(truck_number) {
-    clearInterval(auto_refresh);
     var azureClient1 = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
     var truckTable = azureClient1.getTable('smart_truck_incident');
 
     var query1 = truckTable.read().done(function (results) {
-        clearInterval(auto_refresh);
-        clearInterval(auto_refresh);
-        clearInterval(auto_refresh);
         readArray(results, truck_number);
 
     }, function (err) {
-        // alert("Error: " + err);
+        
     });
 
 }
 
 function readArray(jsonData1, truck_number) {
-    //clearInterval(auto_refresh2);
     var trucks = getmatchingTrucks(jsonData1, 'truck_number', truck_number);
     var marker, infowindow = new google.maps.InfoWindow();
-    var link = "<a>AIE Truck:</a>";
     for (var i = 0; i < trucks.length; ++i) {
-        if (trucks[i].activeIndicator === null) {
+        if (trucks[i].activeIndicator === null || trucks[i].activeIndicator === 1) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(trucks[i].latitude, trucks[i].longitude),
                     map: map,
@@ -93,7 +86,7 @@ function readArray(jsonData1, truck_number) {
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
                         var anchorElem = document.createElement('a');
-                        var yourLink = 'http://aiewireframe.azurewebsites.net/crashreport.html?user=insured&vehicleNo=' + trucks[i].truck_number
+                        var yourLink = 'http://aiewireframe.azurewebsites.net/crashreport.html?user=insured&vehicleNo=' + trucks[i].truck_number;
                         anchorElem.setAttribute("href", yourLink);
                         anchorElem.innerHTML = trucks[i].truck_number;
                         infowindow.setContent(anchorElem);
