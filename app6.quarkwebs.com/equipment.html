@@ -212,12 +212,6 @@
                 </div>
           </div>
            <div id="curr" style="display:none">
-<!--                <div class="list-group">
-                  <a class="list-group-item active">
-                    Current and Past Incidents
-                  </a>
-                  <a class="list-group-item">High Temperature detected. Motor Bearings limited life predicted</a>
-                </div>-->
                <div class="list-group">
                   <a class="list-group-item active">
                     Machine Life Data
@@ -240,7 +234,16 @@
 
       
       
-<div id="onetest">
+     <div id="myGraph" class="col-lg-4" >
+<!--     <div class="alert alert-info">Please select a sensor</div>
+      <input type="text" class="deviceid" value="ipl_insurance::3::6::*"  style="display:none"/>-->
+      <div class="col-lg-3">
+      <h3>History Data:</h3>
+      <div id="histTime"></div>
+       <div id="hisChart" style="width: 450px; height: 300px;">
+      
+       </div>
+     </div>
     <div id="accordion" style="float:left">
       <h3 >Property Information</h3>
         <h4>Location</h4>
@@ -268,40 +271,15 @@
         <p>Sue Stanson (201 456 8900)</p>
         </div>
      </div>
-     <div id="myGraph" style="float:right;padding-right:400" >
-     <div class="alert alert-info">Please select a sensor</div>
-      <input type="text" class="deviceid" value="ipl_insurance::3::6::*"  style="display:none"/>
-      <div>
-       <!--   Start Time::<input type="text" class="startTime" value="" />
-         End Time:: <input type="text" class="endTime" value=""  /> -->
-         <!-- <input type="button" class="showhistory" value="showhistory" onclick="updateAllToTrue();" ></input>
-         <input type="button" class="showhistory" value="showhistory" onclick="readIncident();" ></input> -->
-      <h3>History Data:</h3>
-      <div id="histTime"></div>
-       <div id="hisChart" style="width: 450px; height: 300px;">
-      
-       </div>
-     </div>
-     <br/><br/>    
-         
-<!--      <h3>Live Streaming</h3>
-      <div id="sample"></div>
-
-<div id="typedChart" style="width: 450px; height: 300px;">
-      
-       </div>-->
-       <br/>
-       <br/>
        
     </div>
      </div>
-</div>
       <hr>
 
+    </div> <!-- /container -->      
       <footer>
         <p>&copy; Time Travelers 2013</p>
       </footer>
-    </div> <!-- /container -->      
 
         <script src="js/vendor/bootstrap.min.js"></script>
 
