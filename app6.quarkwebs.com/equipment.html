@@ -32,11 +32,11 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script>
-        $(function() {
-        $( "#accordion" ).accordion({
-        collapsible: true
-        });
-        });
+        //$(function() {
+        //$( "#accordion" ).accordion({
+        //collapsible: true
+        //});
+        //});
         </script>
         <!--Accordian end-->
         
@@ -74,7 +74,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AIE</a><a onClick="goBack()" style="cursor:pointer; font-family:inherit; color:#FFFFFF; text-decoration:none; position:absolute; padding: 15px 0 0 50px"><< Go Back</a>
+          <a class="navbar-brand" href=".">AIE</a><a onClick="goBack()" style="cursor:pointer; font-family:inherit; color:#FFFFFF; text-decoration:none; position:absolute; padding: 15px 0 0 50px"><< Go Back</a>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Equipment Real Time Risk Dashboard</h1>
+        <h2>Equipment Real Time Risk Dashboard</h2>
       </div>
     </div>
 
@@ -95,11 +95,11 @@
       <!--Image of the property-->
       
       <div class="col-lg-4" id="normId">
-          <h2>Alert Center </h2>
+          <h3>Alert Center </h3>
           <p><div class="alert alert-success"><img src="img/tick.png" style="float:left" width="50" height="50">All sensors across all insured locations  are reporting optimal conditions. </div></p>
         </div>
         <div class="col-lg-4" id="errId" style="display:none">
-          <h2>Equipment </h2>
+          <h3>Equipment </h3>
            <input type="button" id="alertbox" style="display:none"></input>
            
           <p><div class="alert alert-warning"><img src="img/symbols-warning.png" style="float:left" width="50" height="50"> <div class="quip"></div></div><p><a class="btn btn-default" onclick="resolveThis();">Resolve Incident &raquo;</a></p></p>
@@ -110,52 +110,56 @@
           <img id="warningbox" src="img/tick.png" style="float:left" width="40" height="40">
          
           <div class="progress">
-          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-            <span class="sr-only">40% Operational</span>
+              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                  <span class="sr-only">40% Operational</span>
+              </div>
           </div>
-        </div>
           
-        </div>-->
-        <div class="col-lg-4">
-          <h2>Equipment Summary</h2>
-            <ul class="list-group">
-              <li class="list-group-item">Year Date: 1st Jan 1995</li>
-                <li class="list-group-item">Model : APL12345t</li>
-                <li class="list-group-item">OClass : High Speed</li>
-                <li  class="list-group-item">Operating load: 1500RPM </li>
-                <li class="list-group-item">Energy Source : Primary- Electricity, Secondary â€“ Diesel</li>
-                <li  class="list-group-item">Standard Operating Temperature: 75*F</li>
-            </ul>
-       </div>
+            </div>-->
+          <div class="col-lg-3">
+              <h3>Equipment Summary</h3>
+              <ul class="list-group">
+                  <li class="list-group-item">Year Date: 1st Jan 1995</li>
+                  <li class="list-group-item">Model : APL12345t</li>
+                  <li class="list-group-item">OClass : High Speed</li>
+                  <li  class="list-group-item">Operating load: 1500RPM </li>
+                  <li class="list-group-item">Energy Source : Primary- Electricity, Secondary â€“ Diesel</li>
+                  <li  class="list-group-item">Standard Operating Temperature: 75*F</li>
+              </ul>
+          </div>
+          <div class="col-lg-3">
+              <h3>Equipment Status</h3>
+              <!--Image-->
+              <img src="img/equipments.jpg" usemap="#prop_details" style="border-width:thin; border-style:solid; border-color:#9999FF; border-radius:5px; margin-left:17px"/>
+              <map name="prop_details">
+                  <area onClick="showDiv('temp')" id="clickme"  shape="circle" coords="153,105,20" alt="temp">
+                  <area onClick="showDiv('curr')"  shape="circle" coords="222,99,17" alt="curr">
+                  <area onClick="showDiv('tims')"  shape="circle" coords="187,106,15" alt="tims">
+        
+                  <area onClick="showDiv('temp')"  shape="circle" coords="23,220,20" alt="temp">
+                  <area onClick="showDiv('curr')"  shape="circle" coords="91,221,17" alt="curr">
+                  <area onClick="showDiv('tims')"  shape="circle" coords="60,217,15" alt="tims">
+
+                  <area onClick="showDiv('temp')"  shape="circle" coords="153,216,20" alt="temp">
+                  <area onClick="showDiv('curr')"  shape="circle" coords="219,220,17" alt="curr">
+                  <area onClick="showDiv('tims')"  shape="circle" coords="188,215,15" alt="tims">
+
+                  <area onClick="showDiv('temp')"  shape="circle" coords="285,101,20" alt="temp">
+                  <area onClick="showDiv('curr')"  shape="circle" coords="349,106,17" alt="curr">
+                  <area onClick="showDiv('tims')"  shape="circle" coords="318,106,15" alt="tims">
+        
+                  <area onClick="showDiv('temp')"  shape="circle" coords="25,104,20" alt="temp">
+                  <area onClick="showDiv('curr')"  shape="circle" coords="93,103,17" alt="curr">
+                  <area onClick="showDiv('tims')"  shape="circle" coords="60,103,15" alt="tims">
+        
+              </map> 
+                    
+          </div>
       </div>
 
 
       <div class="row">
-      <!--Image-->
-      <img src="img/equipments.jpg" usemap="#prop_details" style="border-width:thin; border-style:solid; border-color:#9999FF; border-radius:5px; margin-left:17px"/>
-      <map name="prop_details">
-        <area onClick="showDiv('temp')" id="clickme"  shape="circle" coords="153,105,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="222,99,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="187,106,15" alt="tims">
-        
-        <area onClick="showDiv('temp')"  shape="circle" coords="23,220,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="91,221,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="60,217,15" alt="tims">
 
-        <area onClick="showDiv('temp')"  shape="circle" coords="153,216,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="219,220,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="188,215,15" alt="tims">
-
-        <area onClick="showDiv('temp')"  shape="circle" coords="285,101,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="349,106,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="318,106,15" alt="tims">
-        
-        <area onClick="showDiv('temp')"  shape="circle" coords="25,104,20" alt="temp">
-        <area onClick="showDiv('curr')"  shape="circle" coords="93,103,17" alt="curr">
-        <area onClick="showDiv('tims')"  shape="circle" coords="60,103,15" alt="tims">
-        
-      </map> 
-      
               <div class="col-lg-4">
           
           <p>
@@ -231,28 +235,28 @@
       
 <div id="onetest">
     <div id="accordion" style="float:left">
-      <h2 >Sensor Reading</h2>
-        <h3>Location</h3>
+      <h3 >Sensor Reading</h3>
+        <h4>Location</h4>
         <div>
         <p>147 John Olds drive, Schenectady NY   </p>
         </div>
-        <h3>Property Code</h3>
+        <h4>Property Code</h4>
         <div>
         <p>: US.NY.JEP.789     </p>
         </div>
-        <h3>Plant Manager</h3>
+        <h4>Plant Manager</h4>
         <div>
         <p>Steve M (201 456 7890)</p>
         </div>
-        <h3>Property Insured By</h3>
+        <h4>Property Insured By</h4>
         <div>
         <p>Omega Insurance   </p>
         </div>
-        <h3>Policy Number</h3>
+        <h4>Policy Number</h4>
         <div>
         <p>P1234567    </p>
         </div>
-        <h3>Insurance Broker</h3>
+        <h4>Insurance Broker</h4>
         <div>
         <p>Sue Stanson (201 456 8900)</p>
         </div>
