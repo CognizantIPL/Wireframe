@@ -23,20 +23,23 @@
         <script src="js\ingressGraph\incidentReader.js"></script> 
         <script src="js\ingressGraph\autoincidentReader.js"></script> 
          <script>
-			function goBack()
-			  {
-			  window.history.back()
-			  }
-		</script>
+function goBack()
+ {
+ window.history.back()
+ }
+</script>
         
         <!--Accordian-->
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script type="text/javascript" src="js\service\MobileServices.Web-1.0.0.min.js"></script>
         <script>
         $(function() {
         $( "#accordion" ).accordion({
+        collapsible: true
+        });
+$( "#accordion_policy" ).accordion({
         collapsible: true
         });
         });
@@ -45,17 +48,17 @@
         
         
         <!--Map start-->
-		<style type="text/css">
+<style type="text/css">
           html { height: 100% }
           body { height: 100%; margin: 0; padding: 0 }
-		  #map-canvas { height: 50%; width: 100% }
+ #map-canvas { height: 50%; width: 100% }
         </style>
         <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhH6Hhd-_6dUMA_tP0VK90R8skSKQvY8g&sensor=true">
         </script>
         <script type="text/javascript">
-function initialize() {
-  var myLatlng = new google.maps.LatLng(34.02000,-118.15300);
+function initializeMap(lat, longitude) {
+  var myLatlng = new google.maps.LatLng(lat,longitude);
   var mapOptions = {
     zoom: 17,
     center: myLatlng,
@@ -65,7 +68,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 
-		  
+ 
 
   var marker = new google.maps.Marker({
       position: myLatlng,
@@ -77,15 +80,20 @@ function initialize() {
   });
 }
 
-          google.maps.event.addDomListener(window, 'load', initialize);
+$( document ).ready(function() {
+  // Handler for .ready() called.
+  var vehicleNo = document.URL.split('vehicleNo=')[1];
+  $('#alertBar').text('Truck '+ vehicleNo + ' has reported an accident!');
+});
+
 
         </script>
 
-    	<!--Map end-->
+    <!--Map end-->
 
 
     </head>
-    <body onload="readIncidentTable()">
+    <body onload="readIncidentTable();">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -115,50 +123,86 @@ function initialize() {
       <div class="row">
         <div class="col-lg-4">
           <h2>Alert Center</h2>
-          <p class="alert alert-danger"><img src="img/cross.png"  width="50" height="50">Truck has a emergency</p>
+          <p class="alert alert-danger" ><img src="img/cross.png"  width="50" height="50" ><span id="alertBar">Truck has a emergency</span></p>
          
         </div>
         <div class="col-lg-4">
           <h2>Alert</h2>
       <div id="accordion">
         <h3>Crash Report</h3>
-        <div>
-        <table>
-          <tr>
-            <td><b>Truck Number </b> </td>
-            <td id="trucknumber" value=""> </td>
-          </tr>
-          <tr>
-            <td><b>Latitude  </b></td>
-            <td id="latitude" value=""> </td>
-          </tr>
-          <tr>
-            <td><b>Longitude  </b></td>
-            <td id="longitude" value=""> </td>
-          </tr>
-          <tr>
-            <td><b>Message  </b></td>
-            <td id="message" value=""> </td>
-          </tr>
-          <tr>
-            <td><b>Speed  </b></td>
-            <td id="speed" value=""> </td>
-          </tr>
-          <tr>
-            <td><b>Address  </b></td>
-            <td id="address" value=""> </td>
-          </tr>
-            </table>
+<div>
+<table>
+ <tr>
+<td><b>Truck Number </b> </td>
+<td id="trucknumber" value=""> </td>
+ </tr>
+ <tr>
+<td><b>Latitude  </b></td>
+<td id="latitude" value=""> </td>
+ </tr>
+ <tr>
+<td><b>Longitude  </b></td>
+<td id="longitude" value=""> </td>
+ </tr>
+ <tr>
+<td><b>Message  </b></td>
+<td id="message" value=""> </td>
+ </tr>
+ <tr>
+<td><b>Speed  </b></td>
+<td id="speed" value=""> </td>
+ </tr>
+ <tr>
+<td><b>Address  </b></td>
+<td id="address" value=""> </td>
+ </tr>
+</table>
+</div>
         </div>
+ <div id="accordion_policy">
+        <h3>Policy Information</h3>
+<div>
+<table>
+ <tr>
+<td><b>Policy Number </b> </td>
+<td id="policyNumber" value="80-1209873999"> 80-1209873999</td>
+ </tr>
+ <tr>
+<td><b>Policy Effective Date  </b></td>
+<td id="polcyEffectiveDate" value="May 1st 2011 12:01AM">May 1st 2011 12:01AM </td>
+ </tr>
+ <tr>
+<td><b>Polciy Expiration Date  </b></td>
+<td id="policyExpiration" value="May 1st 2016 12:01AM"> May 1st 2016 12:01AM</td>
+ </tr>
+ <tr>
+<td><b>Coverages  </b></td>
+<td id="policyCoverages" value="Property,Equipment,Auto,Workers Compensation">Property,Equipment,Auto,Workers Compensation </td>
+ </tr>
+ <tr>
+<td><b>Exclusions  </b></td>
+<td id="exclusions" value="Goods in transit for Hazardous Materials">Goods in transit for Hazardous Materials </td>
+ </tr>
+ <tr>
+<td><b>Claim Number  </b></td>
+<td id="claimNumber" value="AAJ0100"> AAJ0100</td>
+ </tr>
+</table>
+</div>
         </div>
+ 
+ 
        </div>
       </div>
-      <br/><br/>
       <input type="hidden" id="veh_id" value=""/>
-      <div style="position:absolute; left:40%;">
-      <input type="button" value="Process Claim" id="process" onClick="handleClaim(this.id)"/>
-      <input type="button" value="Cancel" id="cancel" onClick="handleClaim(this.id)"/>
-      <input type="button" value="Complete Claim" id="complete" onClick="handleClaim(this.id)"/>
+      <input type="hidden" id="channel" value=""/>
+ <br/>
+ <br/>
+      <div style="position:relative; ">
+ 
+      <input type="button" value="Request a Claim" id="request" onClick="handleClaim(this.id)"/>
+      <input type="button" value="Cancel Incident" id="cancel" onClick="handleClaim(this.id)"/>
+      <input type="button" value="Process the Claim" id="process" onClick="handleClaim(this.id)"/>
       <input type="button" value="Reject" id="reject" onClick="handleClaim(this.id)"/>
     </div><br/><br/><br/><br/>
   </form>
@@ -179,10 +223,11 @@ function initialize() {
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-		<!--Google Map start-->
+<!--Google Map start-->
+<div ><h2>Accident Location <span id='truck_header'>and Third Party Towing and Trucking information</span></h2></div>
         <div id="map-canvas" style="width:48%;float:left;"></div>
-        <img src="img/images.png" style="width:48%;align:right;float:right;"/>
- 		<!--Google Map start-->
+        <img src="img/Truck_tow.jpg" id="tow_truck" style="width:48%;align:right;float:right;"/>
+  <!--Google Map start-->
             
       <footer>
         
