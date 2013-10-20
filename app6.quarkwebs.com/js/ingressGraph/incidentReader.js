@@ -15,7 +15,11 @@ for(i=0;i<jsonData1.length;++i){
   
    document.getElementById("errId").style.display="block";
    document.getElementById("errId").focus();
-   document.getElementById("alertbox").value=jsonData1[i].equipmentId;
+   document.getElementById("alertbox").value = jsonData1[i].equipmentId;
+
+   var tempInFahrenheit = Math.round((((212 - 32) / 100) * jsonData1[i].temperature + 32) * 100) / 100;
+   $("#lastReading").html("Last Reading: " + tempInFahrenheit + " &deg;F as of " + jsonData1[i].incidentTimestamp);
+
    $('.quip').empty();
    $('.quip').append("AIE has estimated potential failure on Equipment with Equip-ID: "+jsonData1[i].equipmentId +" This may require immediate attention. All other equipment are reporting optimal conditions.");
    document.getElementById("normId").style.display="none";

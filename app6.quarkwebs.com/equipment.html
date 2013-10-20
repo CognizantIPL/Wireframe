@@ -51,7 +51,7 @@
   <script src="js\ingressGraph\jquery-1.7.2.js"></script>
     <script src="js\ingressGraph\foresight-appbuilder-min-0.0.7.js">
   </script>
-    <script src="js\ingressGraph\ingressGraph.js"></script> 
+    <!--<script src="js\ingressGraph\ingressGraph.js"></script> -->
     <script src="js\ingressGraph\incidentReader.js"></script> 
     <script type="text/javascript" src="js\ingressGraph\jquery.gchart.js"></script>   
     <script type="text/javascript" src="js\service\MobileServices.Web-1.0.0.min.js"></script>   
@@ -205,27 +205,34 @@
                   </a>
                   <a class="list-group-item">Device Id: T1234567890</a>
                   <a class="list-group-item">Device IPV6: 192.169.9.9</a>
-                  <a class="list-group-item">Last Reading: 75.44*F as 09/24/2013 21:00</a>
+                  <a class="list-group-item"><div id="lastReading">Last Reading: 75.44*F as 09/24/2013 21:00</div></a>
                   <a class="list-group-item">Range for the Day: 74.5*F- 76.5*F</a>
                   <a class="list-group-item">Average for the Day: 75.5*F</a>
                 </div>
           </div>
            <div id="curr" style="display:none">
-                <div class="list-group">
+<!--                <div class="list-group">
                   <a class="list-group-item active">
                     Current and Past Incidents
                   </a>
                   <a class="list-group-item">High Temperature detected. Motor Bearings limited life predicted</a>
-                </div>
+                </div>-->
+               <div class="list-group">
+                  <a class="list-group-item active">
+                    Machine Life Data
+                  </a>
+              <img src="img/Machine_Life.jpg">
+                   </div>
           </div>
           <div id="tims" style="display:none">
-            <ul class="list-group">
-              <li class="list-group-item"><img src="img/prop_detail_time_seq.jpg" style="width:250px; height: 200 px"></li>
-            </ul>
-          </div>
-          <div id="dflt">
-      
-          </div>
+              <div class="list-group-small">
+                  <a class="list-group-item active">
+                    Live Streaming
+                  </a>
+        <div id="sample"></div>
+        <div id="typedChart" style="width: 450px; height: 300px;"></div>
+                  </div>
+          <div id="dflt"></div>
         </p>
         </div>
 
@@ -233,7 +240,7 @@
       
 <div id="onetest">
     <div id="accordion" style="float:left">
-      <h3 >Sensor Reading</h3>
+      <h3 >Property Information</h3>
         <h4>Location</h4>
         <div>
         <p>147 John Olds drive, Schenectady NY   </p>
@@ -273,13 +280,14 @@
       
        </div>
      </div>
-     <br/><br/>      
-      <h3>Live Streaming</h3>
+     <br/><br/>    
+         
+<!--      <h3>Live Streaming</h3>
       <div id="sample"></div>
 
 <div id="typedChart" style="width: 450px; height: 300px;">
       
-       </div>
+       </div>-->
        <br/>
        <br/>
        
