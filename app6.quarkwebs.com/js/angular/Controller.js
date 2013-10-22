@@ -1,6 +1,5 @@
 ﻿'use strict';
 var _trucks_in_Map = [];
-//var auto_refresh = setInterval(ReadTruckIncident, 5000);
 var mapOptions = {
     zoom: 3,
     center: new google.maps.LatLng(24.638966, -177.784514),
@@ -65,13 +64,13 @@ function ReadTruckIncident(truck_number) {
     var query = truckTable.where({
         truck_number: truck_number
     }).read().done(function (results) {
-        readArray(results);
+        MakeTheIncidentTruckRed(results);
     }, function (err) {
         alert("Error: " + err);
     });
 }
 
-function readArray(trucks) {
+function MakeTheIncidentTruckRed(trucks) {
     var marker, infowindow = new google.maps.InfoWindow();
     for (var i = 0; i < trucks.length; i++) {
         if (trucks[i].activeIndicator === null || trucks[i].activeIndicator === 1) {
