@@ -2,11 +2,11 @@
 var _trucks_in_Map = [];
 //var auto_refresh = setInterval(ReadTruckIncident, 5000);
 var mapOptions = {
-    zoom: 8,
-    center: new google.maps.LatLng(41.5, -72.6),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    zoom: 3,
+    center: new google.maps.LatLng(24.638966, -177.784514),
+    mapTypeId: google.maps.MapTypeId.HYBRID
 };
-var map = new google.maps.Map(document.getElementById("map_canvas"),  mapOptions);
+var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
 aie.controller('AIETrucksController', function AIETrucksController($scope, $timeout, $log, AIEMobileServices) {
     google.maps.visualRefresh = true;
@@ -45,7 +45,7 @@ aie.controller('AIETrucksController', function AIETrucksController($scope, $time
             }
         }
     });
-   
+
 });
 
 function ArrNoDupe(a) {
@@ -62,52 +62,38 @@ function ArrNoDupe(a) {
 function ReadTruckIncident(truck_number) {
     var azureClient1 = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
     var truckTable = azureClient1.getTable('smart_truck_incident');
-
-    var query1 = truckTable.read().done(function (results) {
-        readArray(results, truck_number);
-
+    var query = truckTable.where({
+        truck_number: truck_number
+    }).read().done(function (results) {
+        readArray(results);
     }, function (err) {
-        
+        alert("Error: " + err);
     });
-
 }
 
-function readArray(jsonData1, truck_number) {
-    var trucks = getmatchingTrucks(jsonData1, 'truck_number', truck_number);
+function readArray(trucks) {
     var marker, infowindow = new google.maps.InfoWindow();
-    for (var i = 0; i < trucks.length; ++i) {
+    for (var i = 0; i < trucks.length; i++) {
         if (trucks[i].activeIndicator === null || trucks[i].activeIndicator === 1) {
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(trucks[i].latitude, trucks[i].longitude),
-                    map: map,
-                    title: trucks[i].address,
-                });
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(trucks[i].latitude, trucks[i].longitude),
+                map: map,
+                title: trucks[i].address,
+            });
 
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        var anchorElem = document.createElement('a');
-                        var yourLink = 'http://aiewireframe.azurewebsites.net/crashreport.html?user=insured&vehicleNo=' + trucks[i].truck_number;
-                        anchorElem.setAttribute("href", yourLink);
-                        anchorElem.innerHTML = trucks[i].truck_number;
-                        infowindow.setContent(anchorElem);
-                        infowindow.open(map, marker);
-                    }
-                })(marker, i));
-                break;
-            }
-      
-    }
-}
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    var anchorElem = document.createElement('a');
+                    var yourLink = 'http://aiewireframe.azurewebsites.net/crashreport.html?user=insured&vehicleNo=' + trucks[i].truck_number;
+                    anchorElem.setAttribute("href", yourLink);
+                    anchorElem.innerHTML = trucks[i].truck_number;
+                    infowindow.setContent(anchorElem);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
 
-function getmatchingTrucks(obj, key, val) {
-    var objects = [];
-    for (var i in obj) {
-        if (!obj.hasOwnProperty(i)) continue;
-        if (typeof obj[i] == 'object') {
-            objects = objects.concat(getmatchingTrucks(obj[i], key, val));
-        } else if (i == key && obj[key] == val) {
-            objects.push(obj);
         }
+        break;
     }
-    return objects;
 }
+
