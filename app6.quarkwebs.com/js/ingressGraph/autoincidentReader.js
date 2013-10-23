@@ -3,7 +3,7 @@ function readIncidentTable()
 var vehicleNo = getDetails();
 var azureClient1 = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
 var equipTable= azureClient1.getTable('smart_truck_incident');
-var query1 = equipTable.read().done(function (results) {
+var query1 = equipTable.where({truck_number: vehicleNo}).read().done(function (results) {
             incdntArray=readArrayItems(results,vehicleNo);
         }, function (err) {
         });
