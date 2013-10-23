@@ -133,7 +133,7 @@
                         <div ng-controller="AgentController">
                             <h3>Current Incidents</h3>
                             <div>
-                                <div id="accordion_Auto" ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=insured&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}}</a></div>
+                                <div id="accordion_Auto" ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=insured&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}} - {{ toJsDate(truck.DateTime) | date:'medium' }}</a></div>
                             </div>
                         </div>
                     </div>
