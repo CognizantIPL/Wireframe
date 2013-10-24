@@ -24,7 +24,7 @@ function getDetails(){
   }else{
     document.getElementById("request").style.visibility="hidden";
     document.getElementById("cancel").style.visibility="hidden";	
-	$("#contact_details").html('<table><tr><td><b>Policy Holder contact</b></td><td id="address" value=""> Steve (860)-345-1234 </td></tr><tr><td><b>Omega Insurance Claim Dept.</b></td><td id="address" value=""> 1-800-267-2064 </td></tr></table>');
+	$("#contact_details").html('<table><tr><td><b>Policy Holder contact</b></td><td id="address" value=""> <a href="tel:+(860)-818-9999" style="color:blue">Call Steve</a> </td></tr><tr><td><b>Omega Insurance Claim Dept.</b></td><td id="address" value=""> <a href="tel:+1-800-277-9878" style="color:blue">Call</a> </td></tr></table>');
   }
   return vehicleNo;
 }
