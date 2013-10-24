@@ -14,7 +14,12 @@ var query1 = incidentTable.select('id').where({truck_number: 'T501'}).read().don
             incdntArray=deleteItems(results);
         }, function (err) {
         });
-    var dataToInsert = {
+    setTimeout(insertHardcodedData,5000);
+}
+
+function insertHardcodedData()
+{
+var dataToInsert = {
         latitude: 12.822716,
         longitude: 80.230838,
         speed: 0.0106854487743271,
