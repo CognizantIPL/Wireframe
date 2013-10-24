@@ -19,11 +19,12 @@ function getDetails(){
     document.getElementById("tow_truck").style.visibility="hidden";
     document.getElementById("truck_header").style.visibility="hidden";
     document.getElementById("accordion_policy").style.visibility="hidden";
-document.getElementById("accordion_policy").style.height="0px";
+	document.getElementById("accordion_policy").style.height="0px";
  
   }else{
     document.getElementById("request").style.visibility="hidden";
-    document.getElementById("cancel").style.visibility="hidden";
+    document.getElementById("cancel").style.visibility="hidden";	
+	$("#contact_details").html('<table><tr><td><b>Policy Holder contact</b></td><td id="address" value=""> Steve (860)-345-1234 </td></tr><tr><td><b>Omega Insurance Claim Dept.</b></td><td id="address" value=""> 1-800-267-2064 </td></tr></table>');
   }
   return vehicleNo;
 }
