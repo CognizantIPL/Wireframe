@@ -1,8 +1,4 @@
 ﻿agentApp.controller('AgentController', function AgentController($scope, $log) {
-    $scope.toJsDate = function (str) {
-        if (!str) return null;
-        return new Date(str);
-    };
     var azureClient1 = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
     var truckTable = azureClient1.getTable('smart_truck_incident');
     var query = truckTable.where({
@@ -33,3 +29,4 @@ agentApp.filter('unique', function () {
         return uniqueList;
     };
 });
+
