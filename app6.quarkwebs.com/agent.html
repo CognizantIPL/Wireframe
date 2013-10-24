@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" ng-app="agentApp">
+<html class="no-js" ng-app="agentApp" id="ng-app">
 <!--<![endif]-->
 
 <head>
@@ -126,7 +126,7 @@
                         <div ng-controller="AgentController">
                             <h3>Current Incidents</h3>
                             <div>
-                                <div ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=agent&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}} - {{ toJsDate(truck.DateTime) | date:'medium' }}</a></div>
+                                <div ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=agent&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}} - {{ truck.DateTime }}</a></div>
                             </div>
                         </div>
                     </div>
