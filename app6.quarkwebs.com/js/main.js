@@ -1,9 +1,25 @@
+var azureClient = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
+var incidentTable = azureClient.getTable('smart_truck_incident');
 
+function deleteItems(jsonData2){
+var latitude,longitude;
+for(i=0;i<jsonData2.length;++i){
+ incidentTable.del({id:jsonData2[i].id});
+}
+}
 function insertIncident(anchorElement) {
-    var azureClient = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
-    var incidentTable = azureClient.getTable('smart_truck_incident');
+    
+//incidentTable.where({truck_number: 'T501'}).delete();
+var query1 = incidentTable.select('id').where({truck_number: 'T501'}).read().done(function (results) {
+            incdntArray=deleteItems(results);
+        }, function (err) {
+        });
+    setTimeout(insertHardcodedData,5000);
+}
 
-    var dataToInsert = {
+function insertHardcodedData()
+{
+var dataToInsert = {
         latitude: 12.822716,
         longitude: 80.230838,
         speed: 0.0106854487743271,
@@ -12,7 +28,7 @@ function insertIncident(anchorElement) {
         truck_number: "T501",
         address: "IT Corridor, Old Mahabalipuram Rd, Siruseri, TN 603103, India",
         DateTime: getISODateTime(new Date())
-    };
+};
 
     incidentTable.insert(dataToInsert);
 
