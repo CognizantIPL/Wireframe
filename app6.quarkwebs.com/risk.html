@@ -64,8 +64,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:250,
-		                height:250,
+		                width:200,
+		                height:200,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -95,8 +95,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:250,
-		                height:250,
+		                width:200,
+		                height:200,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -124,12 +124,12 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:250,
-		                height:250,
+		                width:200,
+		                height:200,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
-		                caption: { offset: [0, -25], value: 'Commercial Auto', position: 'bottom' },
+		                caption: { offset: [0, -25], value: 'Auto', position: 'bottom' },
 		                colorScheme: 'scheme05',
 		                animationDuration: 3600
 		            });
@@ -153,8 +153,8 @@
 		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
 		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
 		                max:100,
-		                width:250,
-		                height:250,
+		                width:200,
+		                height:200,
 		                ticksMinor: { interval: 5, size: '5%' },
 		                ticksMajor: { interval: 10, size: '9%' },
 		                value: 0,
@@ -172,35 +172,7 @@
 		        });		    
 		       
 		    /*/gaugeContainer4*/  
-		    
-		    /*gaugeContainer5*/
-		   
-		        $(document).ready(function () {
-		            $('#gaugeContainer5').jqxGauge({
-		                ranges: [{ startValue: 0, endValue: 25, style: { fill: '#4bb648', stroke: '#4bb648' }, endWidth: 5, startWidth: 1 },
-		                         { startValue: 25, endValue: 50, style: { fill: '#fbd109', stroke: '#fbd109' }, endWidth: 10, startWidth: 5 },
-		                         { startValue: 50, endValue: 75, style: { fill: '#ff8000', stroke: '#ff8000' }, endWidth: 13, startWidth: 10 },
-		                         { startValue: 75, endValue: 100, style: { fill: '#e02629', stroke: '#e02629' }, endWidth: 16, startWidth: 13 }],
-		                max:100,
-		                width:250,
-		                height:250,
-		                ticksMinor: { interval: 5, size: '5%' },
-		                ticksMajor: { interval: 10, size: '9%' },
-		                value: 0,
-		                caption: { offset: [0, -25], value: 'External Rating', position: 'bottom' },
-		                colorScheme: 'scheme05',
-		                animationDuration: 3600
-		            });
-		
-		            $('#gaugeContainer5').on('valueChanging', function (e) {
-		                $('#gaugeValue').text(Math.round(e.args.value) + ' kph');
-		            });
-		
-		            $('#gaugeContainer5').jqxGauge('value', 10); /*<-- this would need the variable from database*/
-
-		        });		    
-		       
-		    /*/gaugeContainer5*/  		    		      
+	    		      
 		      
     		</script>		
 		      
@@ -217,7 +189,7 @@
 		                    { Day:'WC', Total:240, Obtained:140.80},
 		                    { Day:'Auto', Total:80, Obtained:37.33},
 		                    { Day:'Financial', Total:240, Obtained:144.00},
-		                    { Day:'3rd Party Rating', Total:80, Obtained:56.00}
+		                    { Day:'Rating', Total:80, Obtained:56.00}
 		                ];
 						
 		            // prepare jqxChart settings
@@ -276,12 +248,12 @@
 				
 		            // prepare chart data
 		            var  sampleData = [
-		                    { Day:'Temp-Failure Zone', NY:25, Raleigh:69, Hartford:5},
-		                    { Day:'Temp-Safe Zone', NY:25, Raleigh:31, Hartford:5},
-		                    { Day:'Pressure-Failure Zone', NY:23, Raleigh:53, Hartford:6},
-		                    { Day:'Pressure-Safe Zone', NY:27, Raleigh:47, Hartford:4},
-		                    { Day:'RPM-Failure Zone', NY:14, Raleigh:28, Hartford:3},
-		                    { Day:'RPM-Safe Zone', NY:36, Raleigh:72, Hartford:7}
+		                    { Day:'Temp-FZ', NY:25, Raleigh:69, Hartford:5},
+		                    { Day:'Temp-SZ', NY:25, Raleigh:31, Hartford:5},
+		                    { Day:'Pressure-FZ', NY:23, Raleigh:53, Hartford:6},
+		                    { Day:'Pressure-SZ', NY:27, Raleigh:47, Hartford:4},
+		                    { Day:'RPM-FZ', NY:14, Raleigh:28, Hartford:3},
+		                    { Day:'RPM-SZ', NY:36, Raleigh:72, Hartford:7}
 		                ];
 						
 		            // prepare jqxChart settings
@@ -392,8 +364,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="agent.html">AIE</a><a onClick="goBack()" style="cursor:pointer; font-family:inherit; color:#FFFFFF; text-decoration:none; position:absolute; padding: 15px 0 0 50px"><< Go Back</a>
-		  <a href="index.html" style="cursor:pointer; font-family:inherit; color:#FFFFFF; text-decoration:none; position:absolute; padding: 15px 0 0 150px">Log out</a>
+          <a class="navbar-brand" href="agent.html">AIE</a>
+          
+          <ul class="nav navbar-nav">
+            <li><a href="agent.html">Back</a></li>
+            <li><a href="index.html">Log Out</a></li>
+          </ul>          
+          
         </div>
       </div>
     </div>
@@ -405,8 +382,8 @@
       </div>
     </div>
 
-    <div class="container">
-     <div class="panel panel-primary" style="width: 85%">
+    <div class="container" >
+     <div class="panel panel-primary" style="width: 810px">
 	     <div class="panel-heading">
 	     <h3 class="panel-title" style="padding-bottom: 7px"><b>Overall Risk Score </b> <code> 467.73/800 </code> </h3> 
 	     
@@ -422,26 +399,40 @@
 			  </div>
 			</div>
 	     </div>
-	     <div class="panel-body">
-	       <div class="row">   
-		      <div class="col-md-4">	 
+	     <div class="panel-body" >
+	       <div class="row" >   
+ 
 			  	<div style="float: left;" id="gaugeContainer1"></div>
-		      </div>
-		      <div class="col-md-4">	 
+ 
 			  	<div style="float: left;" id="gaugeContainer2"></div>
-		      </div>
-		      <div class="col-md-4">	 
+ 
 			  	<div style="float: left;" id="gaugeContainer3"></div>
-		      </div>    
-	    	  <div class="col-md-4">
+
 	    	  	<div style="float: left;" id="gaugeContainer4"></div>
-	    	  </div>
-	    	  <div class="col-md-4">
-	    	  	<div style="float: left;" id="gaugeContainer5"></div>
-	    	  </div>
+
 	       </div>
 	     </div>
      </div>
+     
+     </br>
+     
+     <div class="row">
+     	<div class="col-md-5" style="width: 400px">
+     		<div id='chartContainer' style="width:400px; height: 400px"/></div>
+     	</div>
+
+     	<div class="col-md-4" style="width: 400px">
+     		<div id='chartContainer2' style="width:400px; height: 400px"/></div>
+     	</div>
+     </div>		 
+     
+     <div class="row">
+     	<div class="col-md-10">
+     		<div id='chartContainer3' style="width:800px; height: 400px"/></div>
+     	</div>
+     </div>	     
+     
+  
      
      <div class="row">
      	<div class="col-md-12">
@@ -489,29 +480,9 @@
 		    </div>  
 		 </div>      	
      </div>
-     </br>
-     
-     <div class="row">
-     	<div class="col-md-10">
-     		<div id='chartContainer' style="width:750px; height: 400px"/></div>
-     	</div>
-     </div>	
-	 
- 
-     <div class="row">
-     	<div class="col-md-10">
-     		<div id='chartContainer2' style="width:750px; height: 400px"/></div>
-     	</div>
-     </div>		 
-     
-     <div class="row">
-     	<div class="col-md-10">
-     		<div id='chartContainer3' style="width:750px; height: 400px"/></div>
-     	</div>
-     </div>	     
-     
+     <br />
 	 <div class="row">
-	 	<div class="col-md-8">
+	 	<div class="col-md-8" style="min-width: 800px">
 			<div class="panel panel-primary">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Underwriter's Report</h3>
@@ -526,8 +497,7 @@
 			  </div>
 			</div>     		  	
 		</div>			 
-	 </div>     
-     
+	 </div>   
       <hr>
 
       <footer>

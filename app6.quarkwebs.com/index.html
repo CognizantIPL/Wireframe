@@ -4,7 +4,14 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <!--Author: Saurav Kumar
-    Email : saurav@sauravkumar.com-->
+    Email : saurav@sauravkumar.com
+    
+    ***NOTE - Please update below log after every change to ensure consistency and quick debugging.***
+    
+    Update - log : Date    Desc                              Develper
+    ----------------------+--------------------------------+-------------
+                   131102  Added Caroursel and removed 
+                           layout bug                        Saurav Kumar  -->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -25,6 +32,34 @@
         <script src="js/ingressGraph/jquery-1.7.2.js"></script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="js/main.js"></script>
+    <!--slider-->
+	    <link rel="stylesheet" href="slider/default/default.css" type="text/css" media="screen" />
+	    <link rel="stylesheet" href="slider/light/light.css" type="text/css" media="screen" />
+	    <link rel="stylesheet" href="slider/dark/dark.css" type="text/css" media="screen" />
+	    <link rel="stylesheet" href="slider/bar/bar.css" type="text/css" media="screen" />
+	    <link rel="stylesheet" href="slider/nivo-slider.css" type="text/css" media="screen" />
+	    <script type="text/javascript" src="slider/jquery.nivo.slider.pack.js"></script>
+	    <script type="text/javascript">
+	    $(window).load(function() {
+	        $('#slider').nivoSlider({
+			    effect: 'random',               // Specify sets like: 'fold,fade,sliceDown'
+			    slices: 15,                     // For slice animations
+			    boxCols: 8,                     // For box animations
+			    boxRows: 4,                     // For box animations
+			    animSpeed: 900,                 // Slide transition speed
+			    pauseTime: 3000,                // How long each slide will show
+			    startSlide: 0,                  // Set starting Slide (0 index)	        	
+	        });
+	    });
+	    </script>	    
+	    <style>
+	    	.slider-wrapper { 
+				width: 80%; 
+				margin: 100px auto;
+			}
+	    </style>
+    <!--/slider-->        
+        
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -46,34 +81,47 @@
     <!-- Main jumbotron -->
     <div class="jumbotron">
       <div class="container">
-        <p>Provide your ID and password to access information.</p>
-              <form class="navbar-form navbar-right" id="radio-submit">
+           <form class="navbar-form navbar-right" id="radio-submit">
             <div class="form-group">
               <input type="text" placeholder="ID" class="form-control">
             </div>
             <div class="form-group">
               <input type="password" placeholder="Password" class="form-control">
             </div>
-              <div class="form-group">
+            <div class="form-group">
                 <input type="radio" name="input" onclick="document.getElementById('radio-submit').action='agent.html';"/><label>Insurer</label>
                 <input type="radio" name="input" onclick="document.getElementById('radio-submit').action='insured.html';"/><label>Insured</label>
             </div>
             <button type="submit" id="button-submit" class="btn btn-success">Sign in</button>
           </form>
-          </div>
-          
-    </div>
-        <div class="row">
-           <img src="img/AIE.jpg"  style="width:50%; height:50%;    display: block;
-    margin-left: auto;
-    margin-right: auto "/>
-        </div>
+
+
+	  <!--slider-->
+	  <div class="row" style="width:75%; height:50%;    display: block;
+    margin-left: 0;
+    margin-right: auto ">
+		  <div class="theme-default bounceInLeft animated"> 
+			<div id="slider" class="nivoSlider">
+			    <img src="slider/slider-img5.jpg" alt="" />
+			    <img src="slider/slider-img1.jpg" alt="" />
+			    <img src="slider/slider-img2.jpg" alt="" />
+			    <img src="slider/slider-img3.jpg" alt="" />
+			    <img src="slider/slider-img4.jpg" alt="" />
+			</div> 
+		  </div>
+	  </div>	
+      <!--/slider-->    
+    
+
 
       <hr>
 
       <footer>
           <p>&copy; <a href="#" class="incidentTrigger">Time Travelers 2013</a></p>
       </footer>
+     </div> 
+    </div> 
+     
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
