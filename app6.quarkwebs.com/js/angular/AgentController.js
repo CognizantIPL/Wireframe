@@ -12,7 +12,7 @@
     });
 
     var equipTable = azureClient1.getTable('equipment_incident');
-    equipTable.where({
+    var query1 = equipTable.where({
         activeIndicator: true
     }).read().done(function (results) {
         $scope.$apply(function () {
