@@ -10,6 +10,18 @@
     }, function (err) {
         alert("Error: " + err);
     });
+
+    var equipTable = azureClient1.getTable('equipment_incident');
+    var query1 = equipTable.where({
+        activeIndicator: true
+    }).read().done(function (results) {
+        $scope.$apply(function () {
+            $scope.Equipments = results;
+        });
+    }, function (err) {
+        alert("Error: " + err);
+    });
+    
 });
 
 agentApp.filter('unique', function () {

@@ -31,7 +31,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
     <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.2.0.js"></script>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-    	  <!--<script>
+    <!--<script>
 			$(function() {
 			    $("#accordion_Property").accordion({
 			collapsible: true, active: false
@@ -118,15 +118,26 @@
                 </div>
                 <hr>
             </div>
-            <div class="container">
+            <div class="container" ng-controller="AgentController">
                 <!-- Example row of columns -->
                 <div class="row">
                     <div class="col-lg-4">
                         <h2>Auto Incidents</h2>
-                        <div ng-controller="AgentController">
+                        <div>
                             <h3>Current Incidents</h3>
                             <div>
-                                <div ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=agent&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}} - {{ truck.DateTime }}</a></div>
+                                <div ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=agent&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}} - {{ truck.DateTime}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h2>Equipment Incidents</h2>
+                        <div>
+                            <h3>Current Incidents</h3>
+                            <div>
+                                <div ng-repeat="equipment in Equipments | unique:'equipmentId'"><a href="http://aiewireframe.azurewebsites.net/equipment.html">{{ equipment.equipmentId}} - {{ equipment.incidentTimestamp}}</a></div>
                             </div>
                         </div>
                     </div>
