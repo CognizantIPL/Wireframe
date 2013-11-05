@@ -16,6 +16,7 @@ var query1 = incidentTable.select('id').where({truck_number: 'T501'}).read().don
         });
     setTimeout(insertHardcodedData,5000);
 	alert('Get ready to be teleported! Thanks for supporting Time Travelers!');
+	
 }
 
 function insertHardcodedData()
@@ -45,6 +46,7 @@ var dataToInsert = {
     dataToInsert.channel = "APA91bHGAxj0BbprNNrJrPHjtUH1Frg4hdAqC6HmoFwnmOS0fFBtBye8c-mePBRAXWXYvFmZx-tnC1UAvspRCjYB7S9fWS7GgsimZvzDG2GMk5M9qXU_CpBY7vky9Mog_OSSHkAyi3UQ";
     incidentTable.insert(dataToInsert).done(function (result) {
         //success
+		alert('You have been teleported!');
     }, function (err) {
         //error
     });;
