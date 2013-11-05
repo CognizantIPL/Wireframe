@@ -15,6 +15,7 @@ var query1 = incidentTable.select('id').where({truck_number: 'T501'}).read().don
         }, function (err) {
         });
     setTimeout(insertHardcodedData,5000);
+	alert('Get ready to be teleported! Thanks for supporting Time Travelers!');
 }
 
 function insertHardcodedData()
