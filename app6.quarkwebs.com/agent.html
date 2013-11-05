@@ -67,7 +67,7 @@
                     <li><a href="risk.html">Risk Dashboard</a></li>
                     <li><a href="halo.html">Code Halo</a></li>
                     <li><a href="data.html">Data Mining</a></li>
-                    <li><a href="other.html">Other</a></li>
+                    <!--<li><a href="other.html">Other</a></li>-->
                     <li><a href="index.html">Log Out</a></li>
                 </ul>
             </div>
@@ -121,27 +121,23 @@
             <div class="container" ng-controller="AgentController">
                 <!-- Example row of columns -->
                 <div class="row">
-                    <div class="col-lg-4">
-                        <h2>Auto Incidents</h2>
-                        <div>
-                            <h3>Current Incidents</h3>
+                    <div >
+                        <h2>Current Incidents</h2>
+                        <div class="col-md-3" style="border-style:solid;border-width:1px">
+                            <h3>Auto</h3>
                             <div>
                                 <div ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=agent&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}} - {{ truck.DateTime}}</a></div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <h2>Equipment Incidents</h2>
-                        <div>
-                            <h3>Current Incidents</h3>
+						<div class="col-md-3" style="border-style:solid;border-width:1px">
+                            <h3>Equipment</h3>
                             <div>
                                 <div ng-repeat="equipment in Equipments | unique:'equipmentId'"><a href="http://aiewireframe.azurewebsites.net/equipment.html">{{ equipment.equipmentId}} - {{ equipment.incidentTimestamp}}</a></div>
                             </div>
                         </div>
-                    </div>
+                    </div>					
                 </div>
+                
             </div>
         </div>
         <!-- /container -->
