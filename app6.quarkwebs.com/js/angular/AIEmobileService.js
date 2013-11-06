@@ -7,19 +7,6 @@ aie.factory('AIEMobileServices', function ($resource, $q, $exceptionHandler, $lo
                 } // adding an update function
             });
     return {
-        getTrackingData: function (id) {
-            console.log("getTrackingData called");
-            var deferred = $q.defer();
-            resource.get({ id: id },
-                function (event) {
-                    deferred.resolve(event);
-                },
-                function (response) {
-                    deferred.reject(response);
-                });
-
-            return deferred.promise;
-        },
         getTrackingDataForAllTrucks: function () {
             console.log("getTrackingDataForAllTrucks called");
             var deferred = $q.defer();
