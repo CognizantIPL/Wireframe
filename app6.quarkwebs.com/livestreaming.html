@@ -41,6 +41,7 @@
 
     <!--fade in-->
     <script src="js\ingressGraph\jquery-1.7.2.js"></script>
+    <script src="js\ingressGraph\smoothie.js"></script>
     <script src="js\ingressGraph\foresight-appbuilder-min-0.0.7.js"></script>
     <script type="text/javascript" src="js\ingressGraph\jquery.gchart.js"></script>
 
@@ -69,7 +70,9 @@
     <div class="container content">
         <div class="row">
             <div id="sample"></div>
-            <div id="typedChart" style="width: 450px; height: 300px;">
+            <label id="title"> Temperature Value: <span id="temperature"></span> </label><br>
+            <label id="sensor"> </label><br>
+            <canvas id="typedChart" width="600px" height="150px"></canvas>
             </div>
             <br />
             <br />
@@ -83,9 +86,47 @@
     <script src="js/vendor/bootstrap.min.js"></script>
 
     <script src="js/plugins.js"></script>
-    <!--<script src="js/main.js"></script>-->
+    <script src="js/main.js"></script>
 
     <script>
+        var stream00 = new TimeSeries();
+        var stream01 = new TimeSeries();
+        var stream02 = new TimeSeries();
+        initialize({key: "2d80af65-896a-4b6d-9a77-b939a309d402"
+           , secret: "3834f777-c66f-4afd-bcd6-aa2b64ad7fe6"
+           , aToken: "null" 
+           , apiHost: "foresight-demo-21591536.us-east-1.elb.amazonaws.com"}, function(err, streams){
+      if(streams){
+            streaming({id: "ipl_insurance::1::1::*", reconnect: true}, function(err, sData){
+          if(!err) {      
+            var temperature = sData.body[0].params.temperature.value;
+            var nodeid = sData.body[0].nodeid;
+            $("#sensor").text("Sensor : "+nodeid);
+           if(nodeid == "00"){
+             stream00.append(new Date().getTime(), temperature);}
+           if(nodeid == "01"){
+             stream01.append(new Date().getTime(), temperature);}
+           if(nodeid == "02"){
+             stream02.append(new Date().getTime(), temperature);}
+      $("#temperature").text(temperature);
+          }
+      else alert(JSON.stringify(err))
+        });
+  }else console.dir(err);
+  });
+var graphOptions = {  millisPerPixel:70, // Graph moving speed 
+                      labels:{precision:0}, //Label precission (i.e) 100.0, 100.00 
+                      grid:{strokeStyle:'transparent',sharpLines:true,fillStyle:'#B6B6B4'}, 
+                      labels:{fillStyle:'#000000'},
+                      minValue: 20, 
+                      maxValue: 40, 
+                      timestampFormatter:SmoothieChart.timeFormatter //Time-stamp
+                   }
+  var chartx = new SmoothieChart(graphOptions);
+  chartx.addTimeSeries(stream00, {lineWidth:3,strokeStyle:'#0020C2'});
+  chartx.addTimeSeries(stream01, {lineWidth:3,strokeStyle:'#8D0000'});
+  chartx.addTimeSeries(stream02, {lineWidth:3,strokeStyle:'#008000'});
+  chartx.streamTo(document.getElementById("typedChart"), 100);
         var liveData = [$.gchart.series('Temp', [], 'red', 'ffffff')];
         var liveAxis = $.gchart.axis('bottom', [], 'black');
         var liveAxisY = $.gchart.axis('left', ['10', '20', '30', '40', '50', '60'], 'black');
@@ -100,7 +141,7 @@
                 liveData[i].data = rotate(liveData[i].data);
             }
             liveAxis.labels(rotate(liveAxis.labels()));
-            $('#typedChart').gchart('option', { series: liveData, axes: [liveAxis, liveAxisY] });
+            /*$('#typedChart').gchart('option', { series: liveData, axes: [liveAxis, liveAxisY] });*/
         }
         var myArray = new Array();
         var myArray1 = new Array();
@@ -134,36 +175,8 @@
 
             return myYaxisArray;
         };
-        function myLiveStream(jsnData) {
-            var temp = jsnData.body[0].params.temperature.value;
-            var timestamp = jsnData.body[0].timestamp;
-            liveData[0].data = myRotate(temp);
-            liveAxis.labels(myRotate1(formatDateHour(new Date(timestamp * 1000))));
-            $('#typedChart').gchart('option', { series: liveData, axes: [liveAxis, liveAxisY] });
-        }
 
-        $('#typedChart').gchart({
-            type: 'line', maxValue: 70,
-            series: liveData, axes: [liveAxis], legend: 'right'
-        });
-
-        initialize({
-            key: "2d80af65-896a-4b6d-9a77-b939a309d402"
-                   , secret: "3834f777-c66f-4afd-bcd6-aa2b64ad7fe6"
-                   , aToken: "null"
-                   , apiHost: "foresight-demo-21591536.us-east-1.elb.amazonaws.com"
-        }, function (err, streams) {
-            if (streams) {
-                streaming({ id: "ipl_insurance::1::1::*", reconnect: true }, function (err, sData) {
-                    if (!err) {
-                        myLiveStream(sData);
-                    }
-                    else alert(JSON.stringify(err))
-                });
-            } else $('#sample').append(JSON.stringify(err));
-
-
-        });
+        
         function getMinute(unixTimestamp) {
             var dt = new Date(unixTimestamp * 1000);
 
