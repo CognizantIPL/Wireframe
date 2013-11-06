@@ -130,7 +130,7 @@
 						</tr>
 						<tr>
 							<td style="border-style:solid;border-width:1px"><div ng-repeat="truck in Trucks | unique:'truck_number'"><a href="http://aiewireframe.azurewebsites.net/crashreport.html?user=agent&vehicleNo={{ truck.truck_number}}">{{ truck.truck_number}} - {{ truck.DateTime}}</a></div></td>
-							<td style="border-style:solid;border-width:1px"><div ng-repeat="equipment in Equipments | unique:'equipmentId'"><a href="http://aiewireframe.azurewebsites.net/equipment.html">{{ equipment.equipmentId}} - {{ equipment.incidentTimestamp}}</a></div></td>
+							<td style="border-style:solid;border-width:1px"><div ng-repeat="equipment in Equipments | unique:'equipmentId'"><a href="http://aiewireframe.azurewebsites.net/equipment.html">{{ equipment.id }} - {{ equipment.equipmentId}} - {{ equipment.incidentTimestamp}}</a></div></td>
 						</tr>
 						</table>
                     </div>					

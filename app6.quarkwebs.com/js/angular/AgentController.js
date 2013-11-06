@@ -13,7 +13,7 @@
 
     var equipTable = azureClient1.getTable('equipment_incident');
     var query1 = equipTable.where({
-        activeIndicator: true
+        activeIndicator: 1
     }).read().done(function (results) {
         $scope.$apply(function () {
             $scope.Equipments = results;
