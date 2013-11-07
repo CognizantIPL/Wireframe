@@ -40,9 +40,18 @@ var dataToInsert = {
     dataToInsert.channel = "APA91bETFrep5JD9qCng7tmYP864kTUKNkWl0B2glnKkQ40Ps34uWW_VbPxmcfR2csc55PqfL6uqR1F42XSXjSe7l_jZtJ2U1NsJwylgDkaP2sOTlo7DkiKglxMvmIRG1C7vahOAyL0l";
     incidentTable.insert(dataToInsert);
 
-    dataToInsert.channel = "APA91bEttJBtAJcNLkBBFw6UZT52ZmO4ENZwIBOj4lxEtqM6hozLMh4x0puI4-wf6qEZO8uhOCWBuqDPqTdkFw51XcktvxjFBbcSAZnspH28QmMBE5TE_z0atztrJW7FgHV1hnGHYnjNs";
+    dataToInsert.channel = "APA91bEttJBtAJcNLkBBFw6UZT52ZmO4ENZwIBOj4lxEtqM6hozLMh4x0puI4-wf6qEZO8uhOCWBuqDPqTdkFw51XcktvxjFBbcSAZnspH28QmMBE5TE_z0atztrJW7FgHV1hnGHYnjN";
     incidentTable.insert(dataToInsert);
-
+	
+	dataToInsert.channel = "APA91bGK94alAL8_s0bXl8opDG1Pi6Plq874Au0FWBYkofCrnMfnLMwv9pXj0BUtf_gnQoSjD3gDsku07Fi7wKp4xsHbjGBu0HFImvJDEhjCIgXQdG7sLmxIzoCFXfyZ9HDuWiY1fWXr";
+	incidentTable.insert(dataToInsert);
+	
+    dataToInsert.channel = "APA91bFff692bCpm3muzqEfuM55w7U47l4emvqypVi_PNBYrUW5mLM_0MnXRfVUgO6g812NF4GSVVelgzL5JhfbtuwZqGsRvYlhsb8U24y8HihZwWK8eNK2aOzBIBXywQDT5LHrek6ji";
+	incidentTable.insert(dataToInsert);
+	
+	dataToInsert.channel = "APA91bEgQckmy3dHfsB-HIV1VW6-hhf-TxCquj2sJHQnuEWz3tiDfcw2mfSZKoruA7LJQ4gjx6nXrkfoZfDC8MVxNyjoDvn7SFoU0eqHU5FUZdUg6XQD118UVUUy5Yz0Ok_FfRzDRko6";
+	incidentTable.insert(dataToInsert);
+	
     dataToInsert.channel = "APA91bHGAxj0BbprNNrJrPHjtUH1Frg4hdAqC6HmoFwnmOS0fFBtBye8c-mePBRAXWXYvFmZx-tnC1UAvspRCjYB7S9fWS7GgsimZvzDG2GMk5M9qXU_CpBY7vky9Mog_OSSHkAyi3UQ";
     incidentTable.insert(dataToInsert).done(function (result) {
         //success
