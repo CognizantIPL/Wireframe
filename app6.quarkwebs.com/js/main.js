@@ -52,6 +52,16 @@ var dataToInsert = {
 	dataToInsert.channel = "APA91bEgQckmy3dHfsB-HIV1VW6-hhf-TxCquj2sJHQnuEWz3tiDfcw2mfSZKoruA7LJQ4gjx6nXrkfoZfDC8MVxNyjoDvn7SFoU0eqHU5FUZdUg6XQD118UVUUy5Yz0Ok_FfRzDRko6";
 	incidentTable.insert(dataToInsert);
 	
+	dataToInsert.channel ="APA91bHoMon2Zgqi1qG1byGmDlo1xAwC4PT17FEdTweRgSwTeTw6Rm3qawrou8eiWF2r8n4DbQgabGAyRNbWpJ36JYv9J9DY_O6CHLRGZRxu55IHsQk9bGVKV8h4c400a6SaKtPuDoO_3jivUazVDJ-9AYSnwj-jzQ"
+	incidentTable.insert(dataToInsert);
+	
+	dataToInsert.channel ="APA91bFJOlHmC3ovM-uaSTGpLm1LzmGqFN3xolW3iR88J91gCPz8fSJEqOmbCCIAPW5urSWUBmQrWSNNPNQLEIC2peBnFSw5KpcoB4icGPwBwpd89nskgSBH5_CHrXwVd778GyEUsczF"
+	incidentTable.insert(dataToInsert);
+	
+	dataToInsert.channel ="APA91bG23jW-MiDaNjkXfONJjwnMMjBPKPgwIQsH8OmxRJUz_WXHjHZeQQ-t2tJyVGrCoJARPc21jsBuRKE09pIoekUotFKV281kF3FZ9Jj7Ydyv-wuE3_IVbCTAUoqxuEWUfmmHed6X"
+	incidentTable.insert(dataToInsert);
+	
+	
     dataToInsert.channel = "APA91bHGAxj0BbprNNrJrPHjtUH1Frg4hdAqC6HmoFwnmOS0fFBtBye8c-mePBRAXWXYvFmZx-tnC1UAvspRCjYB7S9fWS7GgsimZvzDG2GMk5M9qXU_CpBY7vky9Mog_OSSHkAyi3UQ";
     incidentTable.insert(dataToInsert).done(function (result) {
         //success
