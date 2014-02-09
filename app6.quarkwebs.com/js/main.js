@@ -38,13 +38,13 @@ function insertItems(jsonData2)
 	
 	for(i=0;i<jsonData2.length;++i){
 		var dataToInsert = {
-	        latitude: 12.822716,
-	        longitude: 80.230838,
+		    latitude: 41.765174,
+		    longitude: -72.672154,
 	        speed: 0.0106854487743271,
 	        message: "Truck Incident Notification from iOS MapApp",
 	        channel: jsonData2[i].channel,
 	        truck_number: "T501",
-	        address: "IT Corridor, Old Mahabalipuram Rd, Siruseri, TN 603103, India",
+	        address: "56 Prospect Street, Hartford, CT 06103, USA",
 	        DateTime: getISODateTime(new Date())};
 
     		incidentTable.insert(dataToInsert);
