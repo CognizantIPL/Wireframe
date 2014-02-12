@@ -12,11 +12,11 @@ function insertIncident(anchorElement) {
     
 //incidentTable.where({truck_number: 'T501'}).delete();
 var query1 = incidentTable.select('id').where({truck_number: 'T501'}).read().done(function (results) {
-            incdntArray=deleteItems(results);
+            //incdntArray=deleteItems(results);
         }, function (err) {
         });
     setTimeout(insertHardcodedData,5000);
-	alert('Get ready to be teleported! Thanks for supporting Time Travelers!');
+	//alert('Get ready to be teleported! Thanks for supporting Time Travelers!');
 	
 }
 

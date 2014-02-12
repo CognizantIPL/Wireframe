@@ -1,8 +1,8 @@
 ﻿'use strict';
 var _trucks_in_Map = [];
 var mapOptions = {
-    zoom: 3,
-    center: new google.maps.LatLng(24.638966, -177.784514),
+    zoom: 19,
+    center: new google.maps.LatLng(41.765174, -72.672154),
     mapTypeId: google.maps.MapTypeId.HYBRID
 };
 var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
