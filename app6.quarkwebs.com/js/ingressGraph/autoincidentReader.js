@@ -59,8 +59,7 @@ longitude=jsonData2[i].longitude;
 initializeMap(parseFloat(latitude),parseFloat(longitude));
 }
 function handleClaim(action){
-	alert(action);
-  var primary_keys = document.getElementById("veh_id").value;
+ var primary_keys = document.getElementById("veh_id").value;
   var channels = document.getElementById("channel").value;
   var truck_number = document.URL.split('vehicleNo=')[1];
   var azureClient1 = new WindowsAzure.MobileServiceClient('https://aiemobileservice.azure-mobile.net/', 'NYuUVUztAwEXJQZxOFbppximTExpoh26');
@@ -107,11 +106,11 @@ truck_number:trucknumber
 });
 
  }
-  if(action=="process"){
- equipTable.update({                
+if(action=="process"){
+equipTable.update({                
 id: parseInt(primaryKey),
-activeIndicator: 2,
-truck_number:trucknumber
+truck_number:trucknumber,
+activeIndicator: 2
 });
   }
   if(action=="reject"){
