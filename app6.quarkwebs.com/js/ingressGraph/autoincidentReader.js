@@ -59,6 +59,7 @@ longitude=jsonData2[i].longitude;
 initializeMap(parseFloat(latitude),parseFloat(longitude));
 }
 function handleClaim(action){
+	alert(action);
   var primary_keys = document.getElementById("veh_id").value;
   var channels = document.getElementById("channel").value;
   var truck_number = document.URL.split('vehicleNo=')[1];
